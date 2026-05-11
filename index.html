@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>green-code — Programmare per il Pianeta</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap"
+    rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <div class="mesh-bg"></div>
+  <canvas id="bg-canvas"></canvas>
+
+  <!-- NAVIGATION -->
+  <nav id="nav" class="glass">
+    <div class="nav-logo">green<span>·</span>code</div>
+    <button id="nav-toggle" aria-label="Toggle Menu">
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
+    <div class="nav-links">
+      <a href="#perche">Perché conta</a>
+      <a href="#pilastri">I Pilastri</a>
+      <a href="#algoritmi">Algoritmi</a>
+      <a href="#linguaggi">Linguaggi</a>
+      <a href="#pattern">Pattern</a>
+      <a href="#hardware-checklist">Hardware</a>
+      <a href="#cicd">CI/CD</a>
+      <a href="#ai">AI & LLM</a>
+      <a href="#performance">Web Perf</a>
+      <a href="#strumenti">Strumenti</a>
+      <a href="#cases">Casi Studio</a>
+    </div>
+  </nav>
+
+  <button id="back-to-top" title="Torna su" class="glass">↑</button>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-tag">Green Software Engineering — L'essenza della sostenibilità digitale</div>
+    <h1 class="hero-title">
+      <span class="line">Ogni loop</span>
+      <span class="line it">distilla</span>
+      <span class="line warm">energia.</span>
+    </h1>
+    <p class="hero-body">
+      Il software non è un’entità astratta. Ogni istruzione eseguita corrisponde al movimento fisico di elettroni nei
+      semiconduttori, un processo che consuma energia e genera calore da dissipare.
+      Integrare la sostenibilità nello sviluppo significa considerare questi aspetti in ogni fase: dalla scelta degli
+      algoritmi alla gestione dei sistemi che li eseguono, trattando l’energia come una parte centrale del design.
+    </p>
+    <div class="hero-cta">
+      <button class="btn-primary" onclick="document.getElementById('perche').scrollIntoView({behavior:'smooth'})">Eplora
+        l'Impatto →</button>
+    </div>
+
+    <div class="eq-card glass">
+      <div class="eq-label">La fisica del codice</div>
+
+      <div class="eq-formula">E = P · t</div>
+
+      <div class="eq-explain">
+        <b>E (Energia)</b>: rappresenta il costo totale del calcolo, misurato in Joule. È tutto ciò che il sistema
+        “consuma”
+        per eseguire un’operazione.
+        <br /><br />
+        
+        <b>P (Potenza)</b>: indica quanto velocemente viene consumata energia in un preciso istante, misurata in Watt.
+        Più
+        un sistema è inefficiente, più questo valore cresce.
+        <br /><br />
+        
+        <b>t (Tempo)</b>: è la durata dell’esecuzione. Anche un algoritmo efficiente, se lento, continua a consumare
+        energia
+        nel tempo.
+        
+        <div style="margin-top: 1.5rem; font-size: 0.95rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top:1.5rem;">
+          L’ottimizzazione del software non riguarda solo la velocità, ma il tempo in cui il sistema rimane “attivo e
+          acceso”.
+          Ridurre il tempo di esecuzione significa ridurre direttamente l’energia dissipata.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEZIONE 1: PERCHÉ CONTA -->
+  <hr class="sep">
+  <section id="perche" class="section reveal">
+    <div class="section-num">01 — L'Impatto Ambientale del Codice</div>
+    <h2 class="section-title">L'Impronta Invisibile del Digitale</h2>
+    <p class="section-lead">
+      Tendiamo a pensare al software come a qualcosa di "pulito" e immateriale. In realtà, ogni riga di codice che
+      scriviamo attiva un'immensa infrastruttura fisica che consuma risorse planetarie. <em>Il bit non è leggero: ha un
+        peso misurabile in grammi di CO₂.</em>
+    </p>
+
+    <div class="bento">
+      <div class="block bento-item bento-lg glass reveal-left block-accent">
+        <div class="ic-tag ic-bad glass" style="margin-bottom: 2rem;">Physical Infrastructure</div>
+        <h3>La Catena della Dissipazione</h3>
+        <p>Ogni richiesta HTTP che inviamo non è un "viaggio" istantaneo. Attraversa router domestici, armadi di strada,
+          centrali di commutazione e cavi in fibra ottica sottomarini lunghi migliaia di chilometri. Ognuno di questi
+          nodi richiede energia per amplificare e instradare i segnali. Una volta arrivati al Datacenter, i dati vengono
+          elaborati da CPU che dissipano calore 24/7. L'industria digitale consuma circa il <b>3% dell'energia
+            mondiale</b> — più di intere nazioni industrializzate.</p>
+        <div class="analogy glass">
+          <b>La Distanza non è Gratis:</b> Richiamare un file da 1MB da un server a 5.000km di distanza consuma più
+          energia rispetto a un server a 50km, a causa degli amplificatori necessari lungo la fibra ottica.
+        </div>
+      </div>
+      <div class="block bento-item glass reveal-right block-warm">
+        <div class="ic-tag ic-bad glass" style="margin-bottom: 2rem;">Thermo-Physics</div>
+        <h3>Principio di Landauer</h3>
+        <p>Esiste un limite fisico invalicabile: <strong>cancellare informazione produce calore</strong>. Non è una
+          metafora, è termodinamica. Ogni bit sovrascritto in memoria dissipa una quantità minima di energia (kT·ln2 ≈
+          3×10⁻²¹ J). Moltiplica questo per i miliardi di operazioni al secondo di un server: il software che non
+          ottimizza i cicli di calcolo sta letteralmente riscaldando il pianeta a livello atomico.</p>
+      </div>
+      <div class="block bento-item glass reveal-right block-accent">
+        <div class="ic-tag ic-mid glass" style="margin-bottom: 2rem;">Computational Paradox</div>
+        <h3>Bloatware e Paradosso di Jevons</h3>
+        <p>Mentre i chip diventano più efficienti (Legge di Moore), tendiamo a scrivere software sempre più pesante
+          (bloatware). Questo è il Paradosso di Jevons: rendere un'operazione efficiente ci spinge a farne molte di più,
+          annullando i benefici. Scrivere codice "snello" è l'unico modo per rompere questo ciclo.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEZIONE 2: PILASTRI -->
+  <div class="section-dark-wrap" id="pilastri">
+    <section class="section reveal">
+      <div class="section-num">02 — I Tre Pilastri del Green Software</div>
+      <h2 class="section-title">Ingegneria Sostenibile: I Fondamenti</h2>
+      <p class="section-lead">
+        La <em>Green Software Foundation</em> ha delineato tre aree critiche su cui ogni sviluppatore può agire. Non si
+        tratta solo di "spegnere i monitor", ma di ripensare il modo in cui costruiamo i sistemi digitali dal basso
+        verso l'alto.
+      </p>
+
+      <div class="infra-grid">
+        <div class="infra-card glass reveal">
+          <div class="ic-tag ic-best glass">Pillar 1: Efficiency</div>
+          <h3>Efficienza Energetica</h3>
+          <p>L'obiettivo è consumare la minor quantità possibile di elettricità per completare un'operazione. Ogni
+            millesimo di secondo di CPU risparmiato moltiplicato per milioni di esecuzioni equivale a una centrale
+            elettrica spenta.</p>
+          <ul style="margin-top: 1.5rem; font-size: 0.95rem; color: var(--text-muted); list-style: none;">
+            <li>• <b>Ottimizzazione Algoritmica:</b> Ridurre la complessità del calcolo.</li>
+            <li>• <b>Eliminazione del "Zombie Code":</b> Rimuovere librerie e processi inutilizzati.</li>
+            <li>• <b>Minimizzazione Network:</b> Ridurre il peso dei dati che viaggiano sulla rete.</li>
+          </ul>
+        </div>
+
+        <div class="infra-card glass reveal">
+          <div class="ic-tag ic-mid glass">Pillar 2: Carbon Awareness</div>
+          <h3>Consapevolezza del Carbonio</h3>
+          <p>L'energia elettrica non è sempre "pulita" allo stesso modo. L'intensità di carbonio della rete fluttua in
+            base al vento, al sole e alla domanda. Il software consapevole è in grado di adattarsi a queste
+            fluttuazioni.</p>
+          <ul style="margin-top: 1.5rem; font-size: 0.95rem; color: var(--text-muted); list-style: none;">
+            <li>• <b>Temporal Shifting:</b> Eseguire backup o calcoli pesanti quando c'è un picco di rinnovabili.</li>
+            <li>• <b>Demand Shaping:</b> Ridurre la fedeltà dei servizi quando la rete è sotto stress.</li>
+          </ul>
+        </div>
+
+        <div class="infra-card glass reveal">
+          <div class="ic-tag ic-bad glass">Pillar 3: Hardware Efficiency</div>
+          <h3>Efficienza dell'Hardware</h3>
+          <p>L'hardware ha un "costo di carbonio" incorporato (Embodied Carbon) dovuto alla sua estrazione e produzione.
+            Rendere il software compatibile con hardware meno recente significa rimandare l'acquisto di nuovi
+            dispositivi e ridurre i rifiuti elettronici.</p>
+          <ul style="margin-top: 1.5rem; font-size: 0.95rem; color: var(--text-muted); list-style: none;">
+            <li>• <b>Supporto Legacy:</b> Prolungare la vita utile dei dispositivi.</li>
+            <li>• <b>Massimizzazione dell'Uso:</b> Evitare server accesi che non fanno nulla (Idle energy).</li>
+          </ul>
+        </div>
+        </div>
+        </section>
+  </div>
+
+  <!-- SEZIONE 3: ALGORITMI -->
+  <section id="algoritmi" class="section reveal">
+    <div class="section-num">03 — Algoritmi ed Energia</div>
+    <h2 class="section-title">Il Cuore del Consumo</h2>
+    <p class="section-lead">
+      In informatica, la scelta di un algoritmo non è solo una questione di "velocità", ma di <strong>efficienza
+        planetaria</strong>. La velocità misura quanto tempo l'utente aspetta; l'efficienza misura quante risorse
+      l'universo deve "pagare" per quel calcolo.
+    </p>
+    <div class="bento" style="margin-bottom: 6rem;">
+      <div class="block bento-item bento-lg glass reveal-left block-accent">
+        <div class="ic-tag ic-best glass" style="margin-bottom: 2rem;">Theory to Practice</div>
+        <h3>Big O: La Matematica dei Joule</h3>
+        <p>Cos'è un algoritmo? È una ricetta per risolvere un problema. Ma non tutte le ricette sono uguali. La
+          notazione <strong>Big O</strong> esprime come aumenta il lavoro (e l'energia) al crescere della dimensione dei
+          dati (che chiamiamo <b>n</b>).</p>
+        <ul
+          style="margin-top: 1.5rem; font-size: 1.1rem; color: var(--text-muted); list-style: none; display: flex; flex-direction: column; gap: 1.5rem;">
+          <li>• <b style="color:var(--green)">O(1) - Costante:</b> Immagina di trovare un libro in uno scaffale perché
+            sai esattamente dove sta. Che ci siano 10 o 10.000 libri, lo sforzo è identico. È il massimo della
+            sostenibilità.</li>
+          <li>• <b style="color:var(--accent)">O(n) - Lineare:</b> Devi scorrere tutti i libri uno per uno. Se raddoppi
+            i libri, raddoppi la fatica (e i Joule). È il comportamento standard della maggior parte del software.</li>
+          <li>• <b style="color:var(--warm)">O(n²) - Quadratico:</b> Il "Killer Energetico". Per ogni libro nello
+            scaffale, devi ricontrollare tutti gli altri. Con 1.000 libri fai 1 milione di operazioni. Su scala web,
+            questo genera un calore immenso che deve essere dissipato dai condizionatori dei datacenter.</li>
+        </ul>
+      </div>
+      <div class="block bento-item glass reveal-right block-warm">
+        <div class="ic-tag ic-mid glass" style="margin-bottom: 2rem;">Hardware Friction</div>
+        <h3>Il Costo dello Spostamento</h3>
+        <p>Non è solo la CPU a consumare. Spostare dati dalla memoria RAM ai registri della CPU consuma energia ad ogni
+          ciclo. Gli algoritmi inefficienti che "saltano" continuamente da un punto all'altro della memoria (Memory
+          Fragmentation) sprecano Joule preziosi solo per aspettare che i dati arrivino.</p>
+      </div>
+      <div class="block bento-item glass reveal-right block-accent">
+        <div class="ic-tag ic-best glass" style="margin-bottom: 2rem;">Sustainability Goal</div>
+        <h3>Perché Ottimizzare Oltre la Velocità?</h3>
+        <p>Un'app veloce permette al processore di tornare più rapidamente nello stato di "Deep Sleep" (C-states). Se il
+          codice è efficiente, la CPU lavora a piena potenza per 10ms e poi "si spegne". Se è inefficiente, resta accesa
+          per 100ms, consumando 10 volte tanto.</p>
+      </div>
+    </div>
+
+    <!-- Visualizer -->
+    <div class="viz-box glass">
+      <h3 class="tw-title" data-text="Big O Visualizer">Big O Visualizer</h3>
+      <div class="sub" style="color:var(--text-muted); font-size:1.2rem; margin-bottom: 3rem; line-height: 1.6;">
+        Sposta lo slider per vedere graficamente come diverse complessità esplodono all'aumentare dei dati.
+        Il numero di operazioni è proporzionale al consumo di batteria e corrente elettrica.
+      </div>
+
+      <div id="complexity-chart-container" style="margin: 2rem 0; width: 100%; height: 400px; position: relative;">
+        <svg id="complexity-chart"></svg>
+      </div>
+
+      <div class="slider-row">
+        <span>Dati (n): <b id="n-val">100</b></span>
+        <input type="range" id="n-slider" min="2" max="500" value="100">
+      </div>
+
+      <div class="bar-list" id="bar-list"></div>
+
+      <div style="margin-top: 4rem; display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem;" class="reveal">
+        <div class="block glass" style="padding: 2.5rem;">
+          <h3 style="font-size: 1.6rem; color: var(--accent); margin-bottom: 1.5rem;">Il Pericolo di O(n²)</h3>
+          <p style="font-size: 1.1rem; line-height: 1.7;">Con n=500, un algoritmo lineare fa 500 operazioni. Uno
+            quadratico ne fa <b>250.000</b>. Quella differenza è energia termica che deve essere dissipata dai
+            condizionatori del datacenter.</p>
+        </div>
+        <div class="block glass" style="padding: 2.5rem;">
+          <h3 style="font-size: 1.6rem; color: var(--green); margin-bottom: 1.5rem;">L'Eleganza di O(log n)</h3>
+          <p style="font-size: 1.1rem; line-height: 1.7;">Gli algoritmi logaritmici crescono così lentamente che sono
+            quasi indistinguibili da quelli costanti. È l'apice del design ingegneristico sostenibile.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEZIONE 4: LINGUAGGI -->
+  <div class="section-dark-wrap" id="linguaggi">
+    <section class="section reveal">
+      <div class="section-num">04 — Linguaggi e Materia</div>
+      <h2 class="section-title">L'Efficienza della Sintassi</h2>
+      <p class="section-lead">
+        Non tutti i linguaggi sono uguali davanti alla materia. La scelta tra un linguaggio interpretato e uno compilato
+        determina come le istruzioni vengono "tradotte" per l'hardware: alcuni linguaggi richiedono uno sforzo continuo
+        di traduzione (consumando energia), altri sono pronti all'uso. <em>Il codice è energia trasformata in
+          logica.</em>
+      </p>
+
+      <div class="lang-wrap">
+        <div id="lang-chart" class="glass lang-chart-container">
+          <!-- JS dynamic bars -->
+        </div>
+        <div class="lang-sidebar">
+          <div class="block glass block-accent">
+            <div class="ic-tag ic-best glass" style="margin-bottom: 2rem;">Hardware Native</div>
+            <h3>Linguaggi Compilati</h3>
+            <p>C, C++, Rust. Questi linguaggi vengono trasformati in linguaggio macchina (0 e 1) <strong>prima</strong>
+              di essere eseguiti. Durante l'esecuzione, la CPU non spreca un solo ciclo per "capire" cosa fare. Rust, in
+              particolare, è diventato lo standard per il Green Software grazie alla sua capacità di gestire la memoria
+              senza un "Garbage Collector" (un sottoprogramma che gira costantemente consumando energia).</p>
+          </div>
+          <div class="block glass block-warm" style="margin-top: 2rem;">
+            <div class="ic-tag ic-bad glass" style="margin-bottom: 2rem;">Interpreted Costs</div>
+            <h3>Il Peso dell'Interpretazione</h3>
+            <p>Linguaggi come Python o Ruby sono "interpretati": un altro software (l'interprete) deve leggere ogni riga
+              e decidere cosa fare in tempo reale. Questo processo può consumare fino a <strong>75 volte più
+                energia</strong> rispetto a un programma equivalente in C. Python resta essenziale per la ricerca, ma
+              per il calcolo intensivo è una scelta energeticamente costosa.</p>
+          </div>
+        </div>
+        </div>
+        </section>
+  </div>
+
+  <!-- SEZIONE 5: PATTERN -->
+  <section id="pattern" class="section reveal">
+    <div class="section-num">05 — Green Design Patterns</div>
+    <h2 class="section-title">Architetture della Consapevolezza</h2>
+    <div class="patterns-grid">
+      <div class="block glass reveal block-accent">
+        <span class="pat-icon">🦥</span>
+        <h3>Lazy Computing</h3>
+        <p>Il miglior calcolo è quello che non viene mai eseguito. Adottare il pattern "Lazy" significa rimandare
+          l'esecuzione di un'operazione finché non è strettamente necessaria per l'utente, evitando di sprecare cicli
+          CPU in background per scenari ipotetici.</p>
+        <pre class="code"><code>// Calcola solo al momento del bisogno
+            const resource = await lazyLoad();</code></pre>
+      </div>
+      <div class="block glass reveal block-gold" style="transition-delay: 0.1s">
+        <span class="pat-icon">💾</span>
+        <h3>Intelligent Caching</h3>
+        <p>Recuperare un dato dalla memoria locale è infinitamente meno costoso che chiederlo a un database via rete.
+          Implementare una cache intelligente riduce il carico sui server e la "frizione" energetica complessiva
+          dell'applicazione.</p>
+      </div>
+      <div class="block glass reveal block-warm" style="transition-delay: 0.2s">
+        <span class="pat-icon">📐</span>
+        <h3>Demand Shaping</h3>
+        <p>In periodi di scarsa disponibilità di energia rinnovabile (basato su dati real-time), l'applicazione può
+          auto-limitarsi: disattivare animazioni superflue, ridurre la qualità dei media o posticipare i backup pesanti.
+          È l'informatica che si adatta alla natura.</p>
+      </div>
+    </div>
+    </section>
+
+  <!-- SEZIONE 5.5: HARDWARE CHECKLIST -->
+  <div class="section-dark-wrap" id="hardware-checklist">
+    <section class="section reveal">
+      <div class="section-num">05.5 — Green Hardware Checklist</div>
+      <h2 class="section-title">Sincronizzare il Codice con la Materia</h2>
+      <p class="section-lead">
+        Non possiamo ignorare l'hardware su cui gira il nostro codice. L'efficienza dell'hardware è il moltiplicatore
+        dell'efficienza del software. Ecco come assicurarci che la nostra infrastruttura sia sostenibile.
+      </p>
+      <div class="bento">
+        <div class="block bento-item glass reveal block-accent">
+          <h3>1. Rightsizing</h3>
+          <p>Usa solo le risorse CPU e RAM di cui hai realmente bisogno. Un server sovradimensionato che gira al 10% di
+            carico è una delle maggiori fonti di spreco energetico (energia Idle).</p>
+        </div>
+        <div class="block bento-item glass reveal block-gold">
+          <h3>2. Cold Storage</h3>
+          <p>Sposta i dati che non vengono consultati spesso in archivi a basso consumo (Cold Storage). Non serve tenere
+            petabyte di dati "caldi" su SSD ad alte prestazioni se vengono letti una volta all'anno.</p>
+        </div>
+        <div class="block bento-item glass reveal block-green">
+          <h3>3. Device Longevity</h3>
+          <p>Scrivi codice che sia compatibile con browser e sistemi operativi meno recenti. Riducendo i requisiti
+            hardware minimi, prolunghi la vita utile dei dispositivi degli utenti finali.</p>
+        </div>
+        <div class="block bento-item glass reveal block-warm">
+          <h3>4. Clean Energy Region</h3>
+          <p>Prima di fare il deploy, controlla la region del tuo provider Cloud. Scegli datacenter alimentati al 100%
+            da fonti rinnovabili certificates (es: region Google Cloud in Finlandia o Canada).</p>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- SEZIONE 6: CI/CD -->
+  <div class="section-dark-wrap" id="cicd">
+    <section class="section reveal">
+      <div class="section-num">06 — CI/CD & Cloud Consapevole</div>
+      <h2 class="section-title">L'Ingegneria del Rilascio</h2>
+      <p class="section-lead">
+        Automatizzare il software non significa solo velocizzare il business. Significa avere il controllo totale su
+        <strong>quando</strong> e <strong>dove</strong> il calcolo avviene, permettendoci di scegliere i momenti di
+        minor impatto ambientale.
+      </p>
+      <div class="infra-grid">
+        <div class="infra-card glass reveal">
+          <div class="ic-tag ic-best glass">Green DevOps</div>
+          <h3>Temporal Shifting</h3>
+          <p>La rete elettrica ha momenti "verdi" (molto sole/vento) e momenti "neri" (carbone/gas per soddisfare la
+            domanda). Possiamo programmare i nostri test più pesanti perché girino solo quando l'intensità di carbonio è
+            minima.</p>
+        </div>
+        <div class="infra-card glass reveal">
+          <div class="ic-tag ic-mid glass">Global Distribution</div>
+          <h3>Spatial Shifting</h3>
+          <p>Le diverse region dei provider Cloud hanno mix energetici differenti. Scegliere un datacenter in Islanda
+            (geotermico) invece che in una zona alimentata a carbone riduce istantaneamente l'impronta di carbonio del
+            90%.</p>
+        </div>
+        <div class="infra-card glass reveal">
+          <div class="ic-tag ic-bad glass">Optimal Resource</div>
+          <h3>Scale-to-Zero</h3>
+          <p>Il server più ecologico è quello spento. Utilizzare architetture Serverless che si attivano solo su
+            richiesta evita lo spreco di energia "Idle" (server accesi al 5% di carico che consumano comunque il 50%
+            dell'energia).</p>
+        </div>
+        </div>
+        </section>
+  </div>
+
+  <!-- SEZIONE 7: AI & LLM -->
+  <section id="ai" class="section reveal">
+    <div class="section-num">07 — Intelligenza Artificiale Sostenibile</div>
+    <h2 class="section-title">Oltre il Miracolo: Il Costo dell'IA</h2>
+    <p class="section-lead">
+      L'IA generativa è la tecnologia a più alta intensità energetica mai creata. Generare un'immagine tramite IA
+      consuma quanto ricaricare completamente uno smartphone. È imperativo adottare tecniche di <strong>IA
+        Frugale</strong>.
+    </p>
+    <div class="bento">
+      <div class="block bento-item bento-lg glass reveal-left block-warm">
+        <div class="ic-tag ic-bad glass" style="margin-bottom: 2rem;">Energy Intensive</div>
+        <h3>Il Costo di ogni Token</h3>
+        <p>Generare una sola parola (token) con un modello come GPT-4 richiede lo spostamento di miliardi di numeri
+          attraverso cluster di GPU energivore (H100). Ogni prompt complesso dissipa calore paragonabile a un bollitore
+          elettrico acceso per diversi minuti.</p>
+        <div class="analogy glass">
+          <b>Carbon-Aware Inference:</b> Immagina un'API che instrada la tua richiesta di IA al datacenter con l'energia
+          più pulita in quel preciso istante. Se il sole splende in California, mandiamo lì il calcolo. Se è notte,
+          scegliamo una region geotermica in Islanda.
+        </div>
+        <ul style="margin-top: 1.5rem; font-size: 1rem; color: var(--text-muted); list-style: none;">
+          <li>• <b>Speculative Decoding:</b> Usare un modello minuscolo (ed economico) per "bozzare" la risposta e uno
+            grande solo per verificarla.</li>
+          <li>• <b>SLM (Small Language Models):</b> Modelli come Phi-3 o Gemma che girano localmente sul tuo telefono
+            invece che in enormi datacenter.</li>
+        </ul>
+      </div>
+      <div class="block bento-item glass reveal-right block-accent">
+        <div class="ic-tag ic-best glass" style="margin-bottom: 2rem;">Optimization Tech</div>
+        <h3>Quantizzazione e Joule</h3>
+        <p>Invece di usare numeri a 32 bit per i pesi dell'IA, usiamo 4 bit o meno (Quantizzazione). Questo riduce il
+          traffico dati interno alla GPU di oltre l'80% e abbatte linearmente il consumo energetico.</p>
+      </div>
+      <div class="block bento-item glass reveal-right block-gold">
+        <div class="ic-tag ic-mid glass" style="margin-bottom: 2rem;">Fine-Tuning</div>
+        <h3>LoRA (Low-Rank Adaptation)</h3>
+        <p>Invece di addestrare un intero modello da zero (che consuma l'energia di una piccola città), LoRA permette di
+          addestrare solo lo 0.01% dei parametri, ottenendo risultati identici con un risparmio energetico immenso.</p>
+      </div>
+    </div>
+    </section>
+
+  <!-- SEZIONE 7.5: WEB PERF -->
+  <section id="performance" class="section reveal">
+    <div class="section-num">7.5 — Web Performance is Green Performance</div>
+    <h2 class="section-title">La Velocità è Ecologia</h2>
+    <p class="section-lead">
+      Un sito web leggero non è solo più veloce da caricare, ma richiede meno energia per essere trasmesso e
+      renderizzato. Ridurre il peso delle pagine è l'azione più immediata per un web sostenibile.
+    </p>
+    <div class="patterns-grid">
+      <div class="block glass reveal block-accent">
+        <span class="pat-icon">🖼️</span>
+        <h3>Digital-Water Link</h3>
+        <p>Un datacenter di medie dimensioni consuma circa 2 milioni di litri d'acqua al giorno per il raffreddamento.
+          Ottimizzare la CPU non è solo energia: è risparmiare acqua dolce in territori a rischio siccità.</p>
+      </div>
+      <div class="block glass reveal block-accent">
+        <span class="pat-icon">🖼️</span>
+        <h3>Image Optimization</h3>
+        <p>Usare formati moderni come WebP o AVIF può ridurre il peso delle immagini dell'80% rispetto a JPEG. Meno byte
+          trasmessi = meno energia nei cavi sottomarini per ogni visualizzazione.</p>
+      </div>
+      <div class="block glass reveal block-warm">
+        <span class="pat-icon">📦</span>
+        <h3>Bundle Shaking</h3>
+        <p>Eliminare le librerie JavaScript inutilizzate (Tree Shaking) evita che la CPU dell'utente finale debba
+          scaricare e processare codice "fantasma", risparmiando batteria e calore istantaneo.</p>
+      </div>
+      <div class="block glass reveal block-green">
+        <span class="pat-icon">⚡</span>
+        <h3>Static Generation</h3>
+        <p>Calcolare una pagina una sola volta (SSG) invece che su ogni richiesta (SSR) sposta il carico energetico dal
+          server a un file statico, abbattendo il consumo del backend del 95%.</p>
+      </div>
+    </div>
+    </section>
+
+  <!-- SEZIONE 8: STRUMENTI -->
+  <div class="section-dark-wrap" id="strumenti">
+    <section class="section reveal">
+      <div class="section-num">08 — Strumenti del Green Dev</div>
+      <h2 class="section-title">Misurare per Agire</h2>
+      <div class="patterns-grid">
+        <div class="block glass reveal">
+          <div class="tc-head"><span class="tc-name">Scaphandre</span><span class="tc-lang glass">Rust</span></div>
+          <p>Monitoraggio energetico per Kubernetes: visualizza il consumo per ogni patch leggendo i registri RAPL della
+            CPU.</p>
+        </div>
+        <div class="block glass reveal" style="transition-delay: 0.1s">
+          <div class="tc-head"><span class="tc-name">Electricity Maps</span><span class="tc-lang glass">API Web</span>
+          </div>
+          <p>Dati real-time sulla Carbon Intensity della rete mondiale. Indispensabile per il Carbon-Aware Computing.
+          </p>
+        </div>
+        <div class="block glass reveal" style="transition-delay: 0.2s">
+          <div class="tc-head"><span class="tc-name">CodeCarbon</span><span class="tc-lang glass">Python</span></div>
+          <p>Libreria per calcolare le emissioni di CO₂ degli script Python. Genera dashboard dettagliate sull'impatto
+            degli esperimenti.</p>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- SEZIONE 09: CASI STUDIO -->
+  <section id="cases" class="section reveal">
+    <div class="section-num">09 — Casi Studio</div>
+    <h2 class="section-title">L'Impatto Reale</h2>
+    <div class="bento">
+      <div class="block bento-item bento-lg glass reveal-left block-accent">
+        <div class="ic-tag ic-best glass" style="margin-bottom: 2rem;">Big Tech</div>
+        <h3>Microsoft Teams</h3>
+        <p>Ottimizzando l'uso hardware durante le videochiamate, Microsoft ha ridotto il consumo energetico dell'app del
+          50% in due anni.</p>
+      </div>
+      <div class="block bento-item glass reveal-right block-gold">
+        <div class="ic-tag ic-mid glass" style="margin-bottom: 2rem;">Search</div>
+        <h3>Algolia</h3>
+        <p>Spostando i carichi in region con energia pulita e ottimizzando la ricerca, hanno ridotto l'impronta di
+          carbonio del 40%.</p>
+      </div>
+      <div class="block bento-item glass reveal-right block-warm">
+        <div class="ic-tag ic-bad glass" style="margin-bottom: 2rem;">Social</div>
+        <h3>Pinterest</h3>
+        <p>Attraverso il Rightsizing dei server e l'eliminazione dei dati ridondanti, ha ridotto drásticamente la sua
+          bolletta ambientale.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEZIONE 10: CONCETTI CHIAVE -->
+  <section id="glossario" class="section reveal">
+    <div class="section-num">10 — Concetti Chiave</div>
+    <h2 class="section-title">Le Fondamenta</h2>
+    <div class="bento">
+      <div class="block bento-item glass block-accent">
+        <h3>Embodied Carbon</h3>
+        <p>La CO₂ emessa durante la produzione dell'hardware. Estendere la vita di un server è una mossa green
+          fondamentale.</p>
+      </div>
+      <div class="block bento-item glass block-gold">
+        <h3>Carbon Intensity</h3>
+        <p>La "pulizia" dell'energia in un dato momento. Si misura in gCO₂eq/kWh. Varia ora dopo ora.</p>
+      </div>
+      <div class="block bento-item glass block-warm">
+        <h3>PUE</h3>
+        <p>Power Usage Effectiveness. Indica quanta energia del datacenter viene effettivamente usata dai server
+          rispetto ai servizi accessori.</p>
+      </div>
+      <div class="block bento-item glass block-accent">
+        <h3>Marginal Emissions</h3>
+        <p>La CO₂ prodotta dall'ultima centrale elettrica accesa per soddisfare un aumento improvviso di domanda.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="glass">
+    <div class="footer-logo">green<span>·</span>code</div>
+    <p>Ogni riga di codice è una scelta energetica. Scriviamo consapevolmente.</p>
+    <div class="footer-links">
+      <a href="#perche">Perché conta</a>
+      <a href="#pilastri">I Pilastri</a>
+      <a href="#algoritmi">Algoritmi</a>
+      <a href="#linguaggi">Linguaggi</a>
+      <a href="#pattern">Pattern</a>
+      <a href="#hardware-checklist">Hardware</a>
+      <a href="#ai">AI & LLM</a>
+      <a href="#performance">Web Perf</a>
+      <a href="#strumenti">Strumenti</a>
+      <a href="#cases">Casi Studio</a>
+    </div>
+    <p style="margin-top:4rem; font-family:var(--font-mono); font-size:0.75rem; color:var(--text-dim)">
+      Costruito con cura e minima CO₂. Programmare bene è il primo passo per il pianeta.
+    </p>
+  </footer>
+
+  <script type="module" src="main.js"></script>
+</body>
+
+</html>
