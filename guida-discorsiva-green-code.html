@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Guida discorsiva al talk — AI e ambiente, cosa cambia per chi sviluppa</title>
+  <style>
+    @page { size: A4; margin: 19mm 18mm 20mm; }
+    :root { color-scheme: light; }
+    * { box-sizing: border-box; }
+    body { margin: 0; color: #202733; background: #fff; font: 11pt/1.62 Arial, Helvetica, sans-serif; }
+    main { max-width: 850px; margin: 0 auto; padding: 24px 30px 60px; }
+    h1, h2, h3, h4 { color: #172239; line-height: 1.2; break-after: avoid; }
+    h1 { margin: 0 0 14px; font-size: 32pt; letter-spacing: -1.1px; }
+    h2 { margin: 34px 0 13px; padding-bottom: 7px; border-bottom: 2px solid #dfe5f2; font-size: 21pt; }
+    h3 { margin: 25px 0 9px; color: #293b68; font-size: 15pt; }
+    h4 { margin: 18px 0 7px; color: #293b68; font-size: 12pt; }
+    p { margin: 0 0 11px; }
+    ul, ol { margin: 6px 0 14px; padding-left: 23px; }
+    li { margin: 0 0 6px; }
+    a { color: #354d94; overflow-wrap: anywhere; }
+    .cover { min-height: 235mm; display: flex; flex-direction: column; justify-content: center; break-after: page; }
+    .eyebrow, .label { color: #087857; font-size: 9pt; font-weight: 700; letter-spacing: 1.3px; text-transform: uppercase; }
+    .cover .eyebrow { margin-bottom: 17px; }
+    .cover h1 { max-width: 660px; font-size: 39pt; }
+    .subtitle { max-width: 650px; margin: 0 0 25px; color: #48566b; font-size: 16pt; line-height: 1.45; }
+    .cover-rule { width: 76px; height: 4px; margin: 9px 0 20px; background: #138568; }
+    .cover-note { max-width: 600px; color: #566176; }
+    .toc { margin: 25px 0 0; padding: 15px 19px; border-left: 3px solid #138568; background: #f5f7fb; }
+    .toc strong { display: block; margin-bottom: 8px; }
+    .toc ol { margin: 0; }
+    .thesis, .say, .caution, .exercise, .transition, .recap { margin: 15px 0; padding: 12px 15px; break-inside: avoid; }
+    .thesis { border-left: 4px solid #138568; background: #eef7f3; }
+    .say { border-left: 4px solid #6575bb; background: #f3f5fb; }
+    .caution { border-left: 4px solid #d28a2d; background: #fff8ed; }
+    .exercise { border: 1px solid #dce3ee; border-radius: 4px; background: #fafbfd; }
+    .transition { color: #394b70; font-style: italic; }
+    .recap { border: 1px solid #b8d9cc; background: #f3faf7; }
+    .say strong, .caution strong, .exercise strong, .transition strong, .recap strong { display: block; margin-bottom: 4px; }
+    .timing { float: right; color: #68758b; font-size: 10pt; font-weight: 400; }
+    .chapter { break-before: page; }
+    .chapter.first { break-before: auto; }
+    .small { color: #667186; font-size: 9.5pt; }
+    .formula { margin: 12px 0; padding: 11px 14px; background: #f4f6fa; color: #19243a; font-family: "Courier New", monospace; font-size: 10.5pt; }
+    .source { margin-bottom: 9px; }
+    .endnote { margin-top: 30px; padding-top: 10px; border-top: 1px solid #dfe5f2; color: #69758a; font-size: 9pt; }
+    @media print {
+      body { font-size: 10.5pt; }
+      main { max-width: none; padding: 0; }
+      a { color: inherit; text-decoration: none; }
+      .cover { min-height: 255mm; }
+      h2 { margin-top: 26px; }
+    }
+  </style>
+</head>
+<body>
+<main>
+  <header class="cover">
+    <p class="eyebrow">Green software engineering · guida per parlare in pubblico</p>
+    <h1>AI e ambiente.<br>Che cosa cambia<br>per chi sviluppa?</h1>
+    <div class="cover-rule"></div>
+    <p class="subtitle">Guida discorsiva estesa per un talk tecnico e pragmatico su impatti, misure e decisioni di progetto.</p>
+    <p class="cover-note">Una traccia per preparare un intervento di 55 minuti più 10 minuti di domande, pensato anche per chi non lavora ogni giorno con l'intelligenza artificiale. Usa parole comuni, esempi quotidiani e pochi termini tecnici, spiegati quando servono.</p>
+    <div class="toc">
+      <strong>Il percorso del talk · 55 minuti + 10 di domande</strong>
+      <ol>
+        <li>La domanda scomoda — 3 minuti</li>
+        <li>Dove si consuma davvero — 8 minuti</li>
+        <li>Leggere i numeri senza farsi ingannare — 8 minuti</li>
+        <li>Acqua, computer e materiali — 6 minuti</li>
+        <li>Le leve dello sviluppatore — 12 minuti</li>
+        <li>Misurare — 8 minuti</li>
+        <li>AI per l'ambiente — 4 minuti</li>
+        <li>Regole e trasparenza — 3 minuti</li>
+        <li>Checklist finale — 3 minuti</li>
+        <li>Domande — 10 minuti</li>
+      </ol>
+    </div>
+    <p class="small" style="margin-top: 18px">La proposta iniziale indica 50 minuti di talk, ma le durate assegnate alle singole sezioni sommano 55 minuti. Questa guida mantiene i tempi delle sezioni e li dichiara esplicitamente.</p>
+  </header>
+
+  <section class="chapter first">
+    <h2>Prima di cominciare: raccontare il tema con semplicità</h2>
+    <p>Il pubblico potrebbe conoscere poco l'intelligenza artificiale e i suoi aspetti tecnici. Parti quindi da idee familiari: fare una domanda, aspettare una risposta, usare un computer, consumare elettricità. Introduci un termine tecnico solo quando è utile e spiegalo subito con una frase semplice. Se una spiegazione non è necessaria per capire il punto, lasciala nelle note e non dirla a voce.</p>
+    <p>La tesi del talk è semplice: l'AI usa risorse, ma quanto ne usa dipende dal tipo di richiesta e da dove gira. Non serve né allarmare né dire che la tecnologia è «verde» per definizione. Possiamo fare scelte migliori, per esempio evitare richieste inutili e usare un sistema più semplice quando basta.</p>
+    <p>Un esempio da riprendere durante il talk: chiedere a un'AI di scrivere una risposta è come usare un servizio online. Dietro lo schermo ci sono computer e data center, cioè grandi sale piene di server. Il servizio usa elettricità, può aver bisogno di raffreddamento e ha richiesto la produzione di apparecchiature.</p>
+    <h3>Parole tecniche da tradurre al primo uso</h3>
+    <ol>
+      <li><b>Addestramento:</b> il lavoro fatto per preparare il modello prima che le persone lo usino.</li>
+      <li><b>Risposta del modello:</b> il lavoro che il computer fa quando riceve una domanda.</li>
+      <li><b>Data center:</b> un edificio con molti computer che fanno funzionare servizi online.</li>
+      <li><b>Emissioni:</b> gas che contribuiscono al riscaldamento del clima; si possono stimare usando l'energia e il modo in cui è stata prodotta.</li>
+      <li><b>Stima:</b> un calcolo approssimato, non una lettura esatta del consumo.</li>
+    </ol>
+    <div class="thesis"><b>La frase che tiene insieme il talk.</b> L'AI usa risorse. Possiamo capire meglio quante e scegliere come usarla senza sprechi.</div>
+    <p class="small">Quando citi un numero, indica chi lo ha pubblicato e in che anno. Se non è chiaro che cosa conta, dì che è una stima e spiega che cosa manca. Evita formule e abbreviazioni quando non aiutano il pubblico.</p>
+  </section>
+
+  <section class="chapter">
+    <h2>01 · La domanda scomoda <span class="timing">3 minuti</span></h2>
+    <p><b>Messaggio chiave:</b> «Quanto consuma una domanda all'AI rispetto a una ricerca online o a un video?» Non c'è una risposta uguale per tutti: vedremo perché.</p>
+    <h3>Una possibile formulazione</h3>
+    <p>Apri con una domanda semplice: «Cosa succede quando scriviamo una domanda all'AI?». Il computer mostra una risposta in pochi secondi, ma il lavoro avviene su macchine che non vediamo. Una ricerca online o un video usano a loro volta computer e reti, ma in modi diversi. Per questo una cifra trovata online non vale automaticamente per ogni servizio.</p>
+    <p>Non serve spiegare subito tutte le differenze tecniche. Basta dire che contano tre cose: quanto chiediamo al sistema, quanto è grande il lavoro che deve fare e quali computer usa. Se mancano informazioni, dichiara che il numero è una stima. Non inventare precisione.</p>
+    <div class="say"><strong>Una frase da usare</strong>«Quanto consuma una domanda all'AI? Dipende. È come chiedere quanta benzina serve per un viaggio: prima dobbiamo sapere quale auto, quanta strada e in quali condizioni. Oggi vediamo quali sono le domande giuste da fare.»</div>
+    <p><b>Esempio concreto:</b> una domanda semplice può ricevere una risposta al primo tentativo; un compito più difficile può richiedere altre domande e correzioni. In quel caso il lavoro totale è maggiore.</p>
+    <p><b>Visual suggerito:</b> le icone di una domanda all'AI, una ricerca e un video; al centro «dipende da che cosa chiediamo e da quali computer lo fanno».</p>
+    <div class="exercise"><strong>Domanda per il pubblico</strong>«Secondo voi, una risposta breve e una lunga richiedono lo stesso lavoro?»</div>
+    <div class="caution"><strong>Se sei lungo</strong>Taglia la raccolta di risposte, non il chiarimento che un numero senza spiegazione può essere fuorviante.</div>
+    <div class="transition"><strong>Passaggio</strong>«Per capire da cosa dipende, seguiamo il percorso completo: prima ancora della risposta, c'è un modello, un'infrastruttura e un ciclo di vita.»</div>
+  </section>
+
+  <section class="chapter">
+    <h2>02 · Dove si consuma davvero <span class="timing">8 minuti</span></h2>
+    <p><b>Messaggio chiave:</b> l'AI non nasce nel momento in cui scriviamo una domanda. Prima il modello viene preparato, poi grandi computer lo tengono pronto e infine lo usano per rispondere.</p>
+    <h3>Spiegalo come la preparazione e l'uso di un servizio</h3>
+    <p>Prima di poter rispondere, il modello viene preparato usando molti esempi. Questa fase si chiama <b>addestramento</b>. Quando inviamo una domanda, il modello usa ciò che ha già imparato per preparare una risposta. A volte viene preparato una seconda volta per un compito preciso: è un passaggio aggiuntivo, non qualcosa che succede a ogni domanda.</p>
+    <p>La risposta arriva da computer ospitati in grandi edifici chiamati data center. Questi edifici consumano elettricità e hanno bisogno di raffreddamento. Inoltre, produrre i chip e i server richiede materiali ed energia. Quindi il costo non è solo quello della singola risposta: esiste anche il lavoro fatto prima e quello necessario per tenere il servizio disponibile.</p>
+    <p>Se milioni di persone usano lo stesso modello, le risposte sommate possono richiedere molto lavoro. Per questo non si può dire che il costo dell'addestramento sia tutto «della mia domanda», né che non conti affatto. Le stime cambiano in base a che cosa includono: chi le presenta dovrebbe spiegarlo.</p>
+    <div class="say"><strong>Una possibile formulazione</strong>«Pensiamo a un ristorante: prima si prepara la cucina e si tengono pronti gli ingredienti; poi si prepara ogni piatto quando arriva un ordine. Con l'AI c'è un lavoro prima, per preparare il modello, e un lavoro ogni volta che qualcuno fa una domanda.»</div>
+    <p><b>Esempio concreto:</b> mostra il percorso: preparare il modello → tenerlo pronto nei computer → rispondere alle domande → costruire e sostituire i computer.</p>
+    <p><b>Visual suggerito:</b> una semplice linea con quattro immagini, dal modello in preparazione ai server che rispondono.</p>
+    <div class="exercise"><strong>Domanda per il pubblico</strong>«Secondo voi, il lavoro più grande avviene quando si prepara il modello o quando tante persone lo usano?»</div>
+    <div class="caution"><strong>Da verificare e se sei lungo</strong>Il rapporto tra preparazione e uso cambia da un servizio all'altro: non dare una regola valida per tutti. Se sei lungo, salta i dettagli di come si addestra un modello, ma distingui il lavoro fatto prima da quello ripetuto a ogni domanda.</div>
+    <div class="transition"><strong>Passaggio</strong>«Ora che sappiamo quali componenti possono entrare nel conto, vediamo perché due fonti possono dare numeri molto diversi senza che una delle due sia necessariamente un errore.»</div>
+  </section>
+
+  <section class="chapter">
+    <h2>03 · Come leggere i numeri <span class="timing">8 minuti</span></h2>
+    <p><b>Messaggio chiave:</b> un numero da solo non racconta tutta la storia. Prima di confrontare due numeri, controlla che parlino della stessa cosa.</p>
+    <p>Spiega le unità solo quanto basta: Wh indica una piccola quantità di energia; kWh è l'unità che compare spesso nelle bollette; TWh è un'enorme quantità, usata per parlare del consumo di interi paesi o grandi settori. Un dato per una singola richiesta non si confronta direttamente con quello di tutti i data center di un paese.</p>
+    <p>Puoi mostrare due stime diverse, ma non fare una gara per decidere quale sia «quella giusta». Chiedi: riguardano lo stesso modello? La stessa domanda? La stessa quantità di testo? Una conta solo il chip, l'altra anche i computer e il raffreddamento? Queste differenze possono spiegare perché i numeri non coincidono.</p>
+    <p>Anche il luogo conta. L'elettricità può essere prodotta in modi diversi: la stessa quantità usata può quindi causare più o meno emissioni. Inoltre, se rendere una richiesta più economica porta le persone a usare l'AI molto più spesso, il consumo totale potrebbe comunque aumentare. È un rischio da controllare, non una certezza.</p>
+    <div class="say"><strong>Una possibile formulazione</strong>«Quando vedete un numero, chiedetevi: chi lo ha calcolato, in che anno e che cosa ha contato? Una cifra precisa non è automaticamente una cifra completa.»</div>
+    <p><b>Esempio concreto:</b> metti a confronto una stima di un'azienda e uno studio di ricerca. Sotto ogni cifra scrivi in parole semplici che cosa è stato misurato e che cosa è rimasto fuori. Se l'incertezza non è indicata, scrivi «non dichiarata».</p>
+    <p><b>Visual suggerito:</b> due cartellini con numeri diversi e tre domande: «Che cosa? Dove? Chi lo ha misurato?»</p>
+    <div class="exercise"><strong>Domanda per il pubblico</strong>«Quali informazioni vorreste vedere accanto a un numero sull'AI?»</div>
+    <div class="caution"><strong>Fonti e taglio</strong>Usa fonti come IEA, LBNL/DOE, Google e Luccioni et al. solo spiegando che cosa misurano; controlla cifra e anno prima del talk. Se sei lungo, mostra due esempi invece di tre, ma non togliere le domande che aiutano a capirli.</div>
+    <div class="transition"><strong>Passaggio</strong>«Le emissioni non sono l'unico aspetto. Alcuni effetti si vedono soprattutto nel luogo in cui si trovano i computer, dove acqua, rete elettrica e materiali possono contare più della media globale.»</div>
+  </section>
+
+  <section class="chapter">
+    <h2>04 · Acqua e computer <span class="timing">6 minuti</span></h2>
+    <p><b>Messaggio chiave:</b> l'elettricità non è l'unico aspetto da considerare. I grandi computer hanno bisogno di acqua per raffreddarsi e di materiali per essere costruiti.</p>
+    <p>Alcuni data center usano acqua per raffreddare i computer; altri usano sistemi diversi. In certi casi, anche produrre l'elettricità richiede acqua. La quantità e il suo effetto dipendono dal luogo: usare acqua in una zona dove è abbondante non ha lo stesso effetto che usarla dove manca.</p>
+    <p>Per costruire server e chip servono materiali, fabbriche e trasporti. I computer vanno riparati, sostituiti e infine smaltiti. Questi effetti non si vedono quando guardiamo solo l'elettricità usata per una risposta.</p>
+    <div class="say"><strong>Una possibile formulazione</strong>«Un servizio online non è fatto solo di elettricità. Ci sono edifici, computer, acqua per raffreddarli e materiali per costruirli. E il luogo in cui si trova il data center fa la differenza.»</div>
+    <p><b>Esempio concreto:</b> confronta due luoghi: in uno l'acqua è abbondante, nell'altro è scarsa. La stessa tecnologia di raffreddamento può avere conseguenze diverse.</p>
+    <p><b>Visual suggerito:</b> un server al centro, con frecce verso elettricità, acqua, materiali e territorio.</p>
+    <div class="exercise"><strong>Domanda per il pubblico</strong>«Oltre all'elettricità, quale risorsa pensate serva per far funzionare un data center?»</div>
+    <div class="caution"><strong>Da verificare e se sei lungo</strong>Non confrontare quantità d'acqua senza sapere come sono state calcolate e dove. Se sei lungo, riduci i dettagli sui materiali, ma mantieni l'idea che gli impatti cambiano da luogo a luogo.</div>
+    <div class="transition"><strong>Passaggio</strong>«Queste pressioni non sono tutte nelle mani di una persona che scrive codice. Ma il team può intervenire su molte decisioni prima che il carico diventi inevitabile.»</div>
+  </section>
+
+  <section class="chapter">
+    <h2>05 · Le scelte di chi sviluppa <span class="timing">12 minuti</span></h2>
+    <p><b>Messaggio chiave:</b> prima di scegliere un modello, chiediti se serve davvero. Poi scegli lo strumento più semplice che fa bene il lavoro.</p>
+    <p>Presenta ogni scelta con un esempio «prima e dopo». Spiega che un sistema più semplice può costare meno e rispondere più in fretta, ma va controllato: se sbaglia più spesso e bisogna ripetere il lavoro, il risparmio potrebbe sparire.</p>
+    <ol>
+      <li><b>Ti serve davvero un modello AI?</b> Per trovare email duplicate basta una regola nel programma; non serve chiedere a un modello di linguaggio.</li>
+      <li><b>Scegli un modello adatto, non il più grande.</b> Prova un modello più piccolo su esempi reali e controlla che risponda bene.</li>
+      <li><b>Chiedi solo quello che ti serve.</b> Evita risposte troppo lunghe; se puoi, fai lavorare insieme richieste simili.</li>
+      <li><b>Fai arrivare al modello le informazioni giuste.</b> Cerca nei documenti e invia solo quelli utili, invece di inviare ogni volta tutto l'archivio.</li>
+      <li><b>Non ripetere la stessa richiesta senza motivo.</b> Riusa le risposte quando sono ancora valide e metti un limite ai tentativi automatici.</li>
+      <li><b>Scegli il luogo e il momento, se il lavoro può aspettare.</b> Alcune attività possono essere programmate quando il servizio e la rete elettrica lo permettono.</li>
+      <li><b>Spegni ciò che non usi.</b> Evita di tenere computer o modelli attivi quando non servono e non rifare lavori già completati senza motivo.</li>
+    </ol>
+    <div class="say"><strong>Una possibile formulazione</strong>«Se devo controllare che un'email non sia già presente, una regola semplice può bastare. Se devo riassumere un documento, l'AI può essere utile. La scelta migliore è quella che fa bene il lavoro senza complicarlo inutilmente.»</div>
+    <p><b>Esempio concreto:</b> un servizio di assistenza invia ogni volta tutti i manuali al modello. Si può invece cercare prima il paragrafo utile e inviare solo quello. Così si riducono le informazioni da elaborare; poi si controlla che le risposte restino corrette.</p>
+    <p><b>Visual suggerito:</b> una scala di sette gradini, dal «non serve l'AI» a «spegni ciò che non usi».</p>
+    <div class="exercise"><strong>Domanda per il pubblico</strong>«Quale piccolo cambiamento potreste provare nel vostro lavoro?»</div>
+    <div class="caution"><strong>Se sei lungo</strong>Approfondisci tre idee: chiedersi se l'AI serve, scegliere un modello adatto, evitare domande ripetute. Ricorda sempre di controllare che le risposte restino corrette.</div>
+    <div class="transition"><strong>Passaggio</strong>«Come facciamo a sapere se una scelta è migliore? Possiamo misurare alcune cose sul nostro computer e chiedere altre informazioni a chi offre il servizio.»</div>
+  </section>
+
+  <section class="chapter">
+    <h2>06 · Come misurare <span class="timing">8 minuti</span></h2>
+    <p><b>Messaggio chiave:</b> misurare aiuta a capire se una scelta funziona. Non sempre possiamo vedere tutto, ma possiamo dire con onestà che cosa abbiamo misurato.</p>
+    <p>Se il modello gira sul tuo computer, alcuni strumenti possono stimare quanta energia usa il computer durante la prova. CodeCarbon, Green Algorithms e ML.ENERGY/Zeus sono esempi; ognuno funziona in modo diverso e va controllato prima di usarlo. Se invece il modello gira sul computer di un'azienda esterna, spesso non possiamo vedere quanta energia usa quel computer. Possiamo chiedere i dati al fornitore, ma non fingere di averli misurati noi.</p>
+    <p>La Green Software Foundation ha proposto un modo per confrontare il consumo in rapporto al lavoro svolto: per esempio, energia ed emissioni per una risposta corretta. L'idea importante è semplice: confrontare due sistemi che fanno lo stesso lavoro, non numeri isolati. Un numero stimato può essere utile, purché diciamo che è una stima.</p>
+    <div class="say"><strong>Una possibile formulazione</strong>«Possiamo misurare alcune cose sul nostro computer. Per i server di un fornitore, invece, dobbiamo chiedere i dati: non li vediamo direttamente. In entrambi i casi è importante dire che cosa sappiamo e che cosa no.»</div>
+    <p><b>Demo consigliata:</b> fai svolgere lo stesso compito a un modello grande e a uno più piccolo. Controlla quale dà la risposta giusta, quanto tempo impiega e, se puoi, quanta energia usa il computer. Non attribuire al server esterno una misura fatta solo sul tuo portatile.</p>
+    <p><b>Visual suggerito:</b> due colonne «misurato» e «non visibile a noi», con esempi semplici.</p>
+    <div class="exercise"><strong>Domanda per il pubblico</strong>«Come potremmo definire che il compito è stato svolto bene?»</div>
+    <div class="caution"><strong>Se sei lungo</strong>Spiega la differenza tra misurare il proprio computer e chiedere i dati al fornitore. Lascia gli strumenti come risorsa da consultare.</div>
+    <div class="transition"><strong>Passaggio</strong>«L'AI può aiutare a risolvere problemi ambientali. Vediamo un esempio e chiediamoci che cosa è migliorato davvero.»</div>
+  </section>
+
+  <section class="chapter">
+    <h2>07 · L'AI può aiutare l'ambiente? <span class="timing">4 minuti</span></h2>
+    <p><b>Messaggio chiave:</b> l'AI può aiutare a risparmiare energia o a osservare l'ambiente, ma il vantaggio va controllato con esempi concreti.</p>
+    <p>Un sistema può aiutare a prevedere quanta energia servirà, regolare il riscaldamento di un edificio o individuare un problema in immagini satellitari. Ma una previsione migliore non basta: bisogna vedere se qualcuno ha preso una decisione diversa e se quella decisione ha davvero ridotto gli sprechi.</p>
+    <p>Per capirlo, confronta il «prima» senza AI con il «dopo» con AI. Considera anche l'elettricità usata dal sistema. Se non ci sono dati che mostrano un miglioramento reale, dì che il beneficio è possibile ma ancora da verificare.</p>
+    <div class="say"><strong>Una possibile formulazione</strong>«L'AI può essere utile per l'ambiente, per esempio aiutando a regolare il riscaldamento. Ma dobbiamo controllare se l'edificio consuma davvero meno, non solo se il modello fa previsioni migliori.»</div>
+    <p><b>Esempio concreto:</b> confronta la bolletta di un edificio prima e dopo l'introduzione di un sistema intelligente, tenendo conto della stagione e del comfort delle persone. Senza un confronto corretto, non sappiamo se il risparmio dipende dall'AI.</p>
+    <p><b>Visual suggerito:</b> due immagini dello stesso edificio, «prima» e «dopo», con la domanda «che cosa è cambiato davvero?».</p>
+    <div class="exercise"><strong>Domanda per il pubblico</strong>«Che cosa dovremmo misurare per sapere se il sistema ha davvero aiutato?»</div>
+    <div class="caution"><strong>Se sei lungo</strong>Scegli un solo esempio e chiedi che cosa è cambiato rispetto a prima.</div>
+    <div class="transition"><strong>Passaggio</strong>«La trasparenza dei dati non dipende solo dalla buona volontà dei team. Esistono regole, ma ruoli, ambito e scadenze vanno verificati.»</div>
+  </section>
+
+  <section class="chapter">
+    <h2>08 · Regole e trasparenza <span class="timing">3 minuti</span></h2>
+    <p><b>Messaggio chiave:</b> le regole chiedono ad alcune aziende di condividere informazioni; non significano che ogni sviluppatore debba sapere da solo quanta energia usa ogni richiesta.</p>
+    <p>In Europa esistono regole sull'AI e sulla rendicontazione ambientale delle imprese. Alcuni obblighi riguardano chi costruisce e offre modelli; altri riguardano le aziende che devono rendere conto del proprio impatto. Le regole e le date possono cambiare, quindi verifica le fonti ufficiali prima del talk.</p>
+    <p>Per chi sviluppa, l'idea pratica è semplice: quando un'azienda compra un servizio AI, può chiedere al fornitore quali informazioni ambientali mette a disposizione. Non dare consigli legali e non dire che tutti hanno gli stessi obblighi.</p>
+    <div class="say"><strong>Una possibile formulazione</strong>«Le regole aiutano a chiedere più informazioni, ma cambiano in base al tipo di azienda e al suo ruolo. Per noi è utile sapere quali dati chiedere al fornitore e controllare che le fonti siano aggiornate.»</div>
+    <p><b>Esempio concreto:</b> prima di comprare un servizio, chiedi al fornitore dove viene eseguito e se pubblica dati sul suo consumo energetico.</p>
+    <p><b>Visual suggerito:</b> una semplice domanda tra azienda e fornitore: «Quali informazioni potete condividere?».</p>
+    <div class="exercise"><strong>Domanda per il pubblico</strong>«Avete mai chiesto a un fornitore come misura l'impatto del suo servizio?»</div>
+    <div class="caution"><strong>Da verificare e se sei lungo</strong>Controlla le fonti ufficiali e le date più recenti. Se sei lungo, spiega solo che gli obblighi dipendono dal ruolo dell'azienda; non dare consigli legali.</div>
+    <div class="transition"><strong>Passaggio</strong>«Chiudiamo trasformando il percorso in poche domande da portare alla prossima design review.»</div>
+  </section>
+
+  <section class="chapter">
+    <h2>09 · Checklist da portare a casa <span class="timing">3 minuti</span></h2>
+    <p><b>Messaggio chiave:</b> prima di usare l'AI, fermati un momento e controlla che serva davvero e che il risultato sia utile.</p>
+    <p>Richiama la domanda iniziale: «quanto consuma una domanda all'AI?». Ora sappiamo che dipende dal tipo di richiesta e dai computer che la elaborano. Non dobbiamo ricordare formule: bastano sei domande pratiche.</p>
+    <ol>
+      <li>Mi serve davvero l'AI?</li>
+      <li>Esiste un modo più semplice per fare questo lavoro?</li>
+      <li>Posso evitare di inviare informazioni che non servono?</li>
+      <li>Posso riutilizzare una risposta già valida?</li>
+      <li>Come controllo che il risultato sia corretto?</li>
+      <li>Quali informazioni posso chiedere a chi offre il servizio?</li>
+    </ol>
+    <div class="say"><strong>Possibile chiusura</strong>«La risposta iniziale era “dipende”. Ora sappiamo che possiamo fare scelte semplici: usare l'AI quando serve, non sprecare richieste e controllare che il risultato sia davvero utile.»</div>
+    <p><b>Esempio concreto:</b> chiedi al pubblico di scegliere una domanda della checklist da usare già nel prossimo progetto.</p>
+    <p><b>Visual suggerito:</b> una slide con le sei domande, scritte in grande.</p>
+    <div class="exercise"><strong>Domanda per il pubblico</strong>«Quale di queste domande aggiungerete alla prossima decisione di progetto?»</div>
+    <div class="caution"><strong>Se sei lungo</strong>Ripeti la prima e l'ultima domanda, poi chiudi. Non ripercorrere di nuovo tutte le sette leve.</div>
+  </section>
+
+  <section class="chapter">
+    <h2>10 · Domande e confronto <span class="timing">10 minuti</span></h2>
+    <p>Lascia dieci minuti alle domande. Rispondi con parole semplici e un esempio. Se non conosci un numero, dillo e proponi di controllare la fonte dopo il talk.</p>
+    <h3>«Meglio un modello locale o il cloud?»</h3>
+    <p>Non c'è una risposta sempre valida. Un modello sul proprio computer dà più controllo, ma quel computer consuma energia. Un servizio online usa computer di un'azienda esterna. Per scegliere, confronta il risultato, la velocità, la privacy e le risorse usate.</p>
+    <h3>«Ha senso rinunciare all'AI?»</h3>
+    <p>Sì, se l'AI non serve. Per trovare un'email duplicata, per esempio, basta una regola. Per riassumere un testo o aiutare a scrivere, invece, può essere utile. La scelta dipende dal lavoro da fare.</p>
+    <h3>«Una domanda breve usa sempre meno risorse?»</h3>
+    <p>Non sempre. Una domanda breve può richiedere meno lavoro, ma se è poco chiara e bisogna ripeterla molte volte, il lavoro totale può aumentare.</p>
+    <h3>«Posso convertire il numero di parole in emissioni?»</h3>
+    <p>No, non esiste una conversione valida per tutti i modelli. La quantità di testo non ci dice da sola quanta elettricità è stata usata. Se mancano i dati, diciamo che non li conosciamo.</p>
+    <h3>«Se l'AI mi fa risparmiare tempo, non è già un vantaggio ambientale?»</h3>
+    <p>È un vantaggio per chi lavora, ma non prova da solo che si sia consumata meno energia. Per capirlo bisogna misurare anche le risorse usate dai computer.</p>
+    <div class="exercise"><strong>Domanda per aprire il confronto</strong>«Quale idea del talk vorreste provare nel vostro lavoro?» Se manca un dato, proponi di cercarlo dopo.</div>
+    <div class="caution"><strong>Gestione del tempo</strong>Invita domande brevi e usa esempi semplici. Se non conosci un numero, dillo e verifica la fonte dopo il talk.</div>
+  </section>
+
+  <section class="chapter">
+    <h2>Fonti per approfondire</h2>
+    <p>Questa lista è per chi vuole saperne di più, non va letta tutta durante il talk. Prima di usare un numero, controlla la pagina originale, l'anno e che cosa il numero descrive. I rapporti generali parlano di interi data center; non dicono automaticamente quanta energia usa una singola domanda.</p>
+    <ol>
+      <li class="source"><b>International Energy Agency, <i>Energy and AI</i> (2025).</b> Scenari e contesto su energia e data center; sono stime aggregate, non consumi per singola richiesta.<br><a href="https://www.iea.org/reports/energy-and-ai">iea.org/reports/energy-and-ai</a></li>
+      <li class="source"><b>Lawrence Berkeley National Laboratory / U.S. DOE, <i>2024 Report on U.S. Data Center Energy Use</i>.</b> Dati e scenari riferiti agli Stati Uniti; controllare periodo, valori e metodologia nel rapporto originale.<br><a href="https://www.energy.gov/articles/doe-releases-new-report-evaluating-increase-electricity-demand-data-centers">energy.gov · report DOE</a></li>
+      <li class="source"><b>Google, <i>Measuring the environmental impact of AI inference</i> (2025).</b> Una stima pubblicata dall'azienda sul proprio servizio; non vale per tutti i modelli.<br><a href="https://cloud.google.com/blog/products/infrastructure/measuring-the-environmental-impact-of-ai-inference">Google Cloud Blog</a></li>
+      <li class="source"><b>Luccioni et al., <i>Power Hungry Processing: Watts Driving the Cost of AI Deployment?</i> (2023).</b> Uno studio che misura attività diverse, come leggere un testo e creare immagini.<br><a href="https://arxiv.org/html/2311.16863">arxiv.org/html/2311.16863</a></li>
+      <li class="source"><b>Green Software Foundation, Software Carbon Intensity.</b> Una guida per confrontare l'impatto con il lavoro che il software completa.<br><a href="https://sci.greensoftware.foundation/">sci.greensoftware.foundation</a></li>
+      <li class="source"><b>CodeCarbon.</b> Tracciamento sul proprio computer e stima delle emissioni in base al computer e all'elettricità usata.<br><a href="https://codecarbon.io/">codecarbon.io</a></li>
+      <li class="source"><b>Green Algorithms.</b> Un calcolatore che stima l'energia usata da un'attività, in base ai dati inseriti.<br><a href="https://www.green-algorithms.org/">green-algorithms.org</a></li>
+      <li class="source"><b>ML.ENERGY / Zeus.</b> Strumenti per osservare quanta energia usano alcuni programmi AI.<br><a href="https://ml.energy/zeus/">ml.energy/zeus</a></li>
+      <li class="source"><b>Norme europee.</b> Consultare il testo ufficiale e aggiornato dell'AI Act e della CSRD, gli atti applicativi e le fonti nazionali pertinenti; verificare stato e scadenze alla data dell'intervento.<br><a href="https://artificial-intelligence-act.ec.europa.eu/">Commissione europea · AI Act</a> · <a href="https://finance.ec.europa.eu/capital-markets-union-and-financial-markets/company-reporting-and-auditing/company-reporting/corporate-sustainability-reporting_en">Commissione europea · reporting di sostenibilità</a></li>
+    </ol>
+    <div class="caution"><strong>Prima di usare un numero</strong>Controlla chi lo ha pubblicato, in che anno e che cosa descrive. Se non è chiaro come è stato calcolato, dichiaralo come stima o non usarlo.</div>
+    <p class="endnote">Questa guida accompagna l'e-book e il talk esteso del progetto green·code. Per la scaletta e gli esempi aggiornati visita <a href="public/talk.html">la versione estesa del talk</a>. Verifica fonti, strumenti e norme prima della presentazione: i dati e il quadro regolatorio possono cambiare.</p>
+  </section>
+</main>
+</body>
+</html>

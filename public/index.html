@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f4efe4">
+  <meta name="description" content="Un e-book interattivo sull'impatto ambientale dell'AI: energia, infrastrutture, scelte tecniche, misurazione e regole.">
+  <title>green·code — Un libro da sfogliare</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="book.css">
+  <script defer src="book.js"></script>
+</head>
+<body>
+  <header class="reader-bar">
+    <a class="brand" href="#libro" aria-label="green code, torna al libro"><span class="brand-mark">g<span>·</span>c</span><span class="brand-name">green·code</span></a>
+    <p class="reader-edition">Un libro interattivo <span>·</span> codice AI, risorse, ambiente</p>
+    <a class="deep-link" href="talk.html">Versione estesa <span aria-hidden="true">↗</span></a>
+  </header>
+
+  <main id="libro">
+    <section class="reading-intro" aria-labelledby="book-title">
+      <p class="eyebrow">Un libro da sfogliare, non una lezione da scorrere</p>
+      <h1 id="book-title">L'AI scrive.<br><em>La materia risponde.</em></h1>
+      <p class="intro-copy">Una guida semplice all'impatto ambientale dell'AI: da dove arriva una risposta, quali risorse usa e che cosa possiamo fare per evitare sprechi. I termini tecnici sono spiegati e i numeri hanno sempre una fonte.</p>
+        <div class="reader-promise"><span class="promise-icon" aria-hidden="true">✳</span><p><b>Il filo del libro:</b> l'AI usa computer ed energia. Quanto ne usa dipende da che cosa le chiediamo e da come funziona il servizio. Possiamo fare scelte più semplici e controllare i risultati senza allarmismi.</p></div>
+      <button class="start-reading" type="button" data-go-to="0">Apri il libro <span aria-hidden="true">↓</span></button>
+    </section>
+
+    <section class="reader" aria-label="Lettore del libro">
+      <div class="reader-status">
+        <p class="current-chapter" id="current-chapter">Copertina</p>
+        <p class="page-counter" aria-live="polite"><span id="current-page">01</span><span class="counter-divider">/</span><span id="total-pages">17</span></p>
+      </div>
+      <div class="reading-track" role="progressbar" aria-label="Avanzamento nel libro" aria-valuemin="1" aria-valuemax="17" aria-valuenow="1" id="reading-progress"><span id="reading-progress-fill"></span></div>
+
+      <nav class="chapter-index" aria-label="Indice: scegli una pagina">
+        <button type="button" data-go-to="0" aria-label="Vai alla copertina" aria-current="page">00</button>
+        <button type="button" data-go-to="1" aria-label="Vai a: La domanda scomoda">01</button>
+        <button type="button" data-go-to="2" aria-label="Vai a: Il ciclo di vita dell'AI">02</button>
+        <button type="button" data-go-to="3" aria-label="Vai a: Dove si consuma davvero">03</button>
+        <button type="button" data-go-to="4" aria-label="Vai a: Leggere i numeri">04</button>
+        <button type="button" data-go-to="5" aria-label="Vai a: Elettricità e uso che cresce">05</button>
+        <button type="button" data-go-to="6" aria-label="Vai a: Acqua, computer e materiali">06</button>
+        <button type="button" data-go-to="7" aria-label="Vai a: Le leve dello sviluppatore">07</button>
+        <button type="button" data-go-to="8" aria-label="Vai a: Scegliere il modello giusto">08</button>
+        <button type="button" data-go-to="9" aria-label="Vai a: Inviare solo ciò che serve">09</button>
+        <button type="button" data-go-to="10" aria-label="Vai a: Rendere il modello più semplice">10</button>
+        <button type="button" data-go-to="11" aria-label="Vai a: Quante persone usano il servizio">11</button>
+        <button type="button" data-go-to="12" aria-label="Vai a: Dove e quando eseguire">12</button>
+        <button type="button" data-go-to="13" aria-label="Vai a: Dare informazioni al modello">13</button>
+        <button type="button" data-go-to="14" aria-label="Vai a: Misurare con strumenti">14</button>
+        <button type="button" data-go-to="15" aria-label="Vai a: AI per l'ambiente e regole">15</button>
+        <button type="button" data-go-to="16" aria-label="Vai a: Checklist e domande">16</button>
+      </nav>
+
+      <div class="book-scene" id="book-scene">
+        <div class="book-shadow" aria-hidden="true"></div>
+        <div class="book" id="book">
+          <section class="spread spread-cover is-current" data-page="0" data-title="Copertina" aria-label="Copertina">
+            <div class="book-page left-page cover-back">
+              <span class="running-title">GREEN SOFTWARE</span>
+              <p class="cover-back-note">Un sistema digitale non è immateriale solo perché non possiamo vederlo.</p>
+              <span class="page-number">i</span>
+            </div>
+            <article class="book-page right-page cover-front">
+              <span class="cover-series">UN LIBRO INTERATTIVO</span>
+              <span class="cover-asterisk" aria-hidden="true">✳</span>
+              <h2>AI,<br>ambiente<br><em>e codice.</em></h2>
+              <p class="cover-subtitle">Una guida estesa per leggere l'impatto e fare scelte tecniche concrete.</p>
+              <span class="cover-byline">LEGGI · ESPLORA · RICORDA</span>
+              <span class="page-number">01</span>
+            </article>
+          </section>
+
+          <section class="spread" data-page="1" data-title="La domanda scomoda">
+            <aside class="book-page left-page">
+              <span class="running-title">LA DOMANDA SCOMODA</span>
+              <span class="margin-note">Una risposta senza scorciatoie</span>
+              <p class="side-quote">Quanta energia usa una richiesta all'AI rispetto a una ricerca online o a un video?</p>
+              <div class="bookmark-note"><span>Segnalibro</span><b>La risposta è “dipende”. Vediamo da cosa.</b></div>
+              <span class="page-number">02</span>
+            </aside>
+            <article class="book-page right-page">
+              <span class="chapter-label">01 · LA DOMANDA SCOMODA</span>
+              <h2>Quanto costa una richiesta AI<br><em>rispetto a una ricerca o a un video?</em></h2>
+              <p class="dropcap">È una comparazione concreta, ma non esiste un numero valido per ogni caso. Una richiesta a un modello cambia con la sua dimensione, il testo inviato, la lunghezza della risposta, il server e il metodo di misura. Anche una ricerca web e un video dipendono da rete, dispositivo, qualità e durata. Se i confini non coincidono, i numeri non sono direttamente confrontabili.</p>
+              <p>Vedremo che cosa succede prima e dopo una domanda all'AI, quali computer entrano in gioco e come evitare richieste inutili. Quando incontrerai un numero, troverai la fonte e una spiegazione di che cosa descrive. Se un dato non è sicuro, lo diremo chiaramente.</p>
+              <div class="three-questions" aria-label="Tre domande da ricordare">
+                <div><span>01</span><b>Quale compito?</b><small>Sappiamo che cosa chiediamo e che cosa vogliamo ottenere?</small></div>
+                <div><span>02</span><b>Quali parti?</b><small>La risposta, i computer pronti o anche la loro produzione?</small></div>
+                <div><span>03</span><b>Quale prova?</b><small>Fonte, metodo e incertezza sono dichiarati?</small></div>
+              </div>
+              <p class="pencil-note">La risposta dipende: il resto del libro serve a trasformare quel “dipende” in domande e misure utili.</p>
+              <span class="page-number">03</span>
+            </article>
+          </section>
+
+          <section class="spread" data-page="2" data-title="Il ciclo di vita dell'AI">
+            <aside class="book-page left-page">
+              <span class="running-title">IL CICLO DI VITA</span>
+              <span class="margin-note">Cinque parole essenziali</span>
+              <dl class="mini-glossary">
+                <div><dt>Dati</dt><dd>Raccolti, selezionati e preparati prima di addestrare il modello.</dd></div>
+                <div><dt>Addestramento</dt><dd>Preparare il modello prima che risponda alle persone.</dd></div>
+                <div><dt>Adattamento</dt><dd>Preparare ancora il modello per un compito specifico.</dd></div>
+                <div><dt>Risposta</dt><dd>Il lavoro dei computer quando arriva una domanda.</dd></div>
+              </dl>
+              <p class="side-footnote">Preparare un modello e usarlo per rispondere sono fasi diverse.</p>
+              <span class="page-number">04</span>
+            </aside>
+            <article class="book-page right-page">
+              <span class="chapter-label">02 · IL CICLO DI VITA DELL'AI</span>
+              <h2>Il modello non nasce<br><em>quando fai una domanda.</em></h2>
+              <p>Prima di poter rispondere, il modello viene preparato usando molti esempi. Chiamiamo questa fase <b>addestramento</b>. Non avviene ogni volta che facciamo una domanda. Quando scriviamo, i computer usano il modello già pronto per preparare una risposta.</p>
+              <p>È un po' come una cucina: prima si prepara e si attrezza il locale, poi si prepara ogni piatto quando arriva un ordine. Il servizio AI ha un lavoro fatto prima e un lavoro ripetuto a ogni richiesta. Per questo le stime devono spiegare che cosa includono.</p>
+              <div class="message-journey" aria-label="Viaggio della richiesta">
+                <div><span class="journey-number">1</span><b>Preparazione</b><small>Insegnare al modello prima dell'uso.</small></div>
+                <i aria-hidden="true">→</i>
+                <div><span class="journey-number">2</span><b>Servizio</b><small>Risorse pronte a ricevere richieste.</small></div>
+                <i aria-hidden="true">→</i>
+                <div><span class="journey-number">3</span><b>Risposta</b><small>I computer lavorano alla domanda.</small></div>
+              </div>
+              <div class="remember-box"><b>Ricorda</b> Preparare il modello e rispondere alle domande sono due lavori diversi. Quando si mostra un numero, bisogna dire quale dei due è contato.</div>
+              <span class="page-number">05</span>
+            </article>
+          </section>
+
+          <section class="spread" data-page="3" data-title="Dove si consuma davvero">
+            <aside class="book-page left-page">
+              <span class="running-title">IL LAVORO DEL SERVIZIO AI</span>
+              <span class="margin-note">Prima, durante e dopo</span>
+              <ol class="life-steps">
+                <li><span>01</span><div><b>Preparare</b><small>Dati e addestramento</small></div></li>
+                <li><span>02</span><div><b>Tenere pronto</b><small>Servizio e memoria</small></div></li>
+                <li><span>03</span><div><b>Rispondere</b><small>Il lavoro per ogni risposta</small></div></li>
+                <li><span>04</span><div><b>Costruire e sostituire</b><small>Computer e materiali</small></div></li>
+              </ol>
+              <span class="page-number">06</span>
+            </aside>
+            <article class="book-page right-page">
+              <span class="chapter-label">03 · DOVE SI CONSUMA DAVVERO</span>
+              <h2>Una richiesta è solo<br><em>una parte del sistema.</em></h2>
+              <p>Le risposte vengono preparate da computer in grandi edifici chiamati <b>data center</b>. Questi edifici usano elettricità e hanno bisogno di raffreddamento. Alcuni computer possono restare pronti anche quando non stanno rispondendo a una domanda.</p>
+              <p>Anche costruire i computer richiede materiali ed energia. Questo lavoro avviene prima che il servizio venga usato e non si vede guardando una singola risposta. Se tante persone usano lo stesso modello, il lavoro ripetuto per rispondere può diventare importante; quanto pesa rispetto alla sua preparazione dipende dal servizio.</p>
+              <div class="analogy"><span class="analogy-label">Un paragone utile</span><p>Un negozio usa energia per tenere aperte le luci, per servire ogni cliente e per costruire e attrezzare il locale. Un servizio AI ha costi simili: tenerlo pronto, rispondere e costruire i computer.</p></div>
+              <p class="pencil-note">Chi sviluppa può evitare richieste inutili e chiedere al fornitore informazioni su dove e come funziona il servizio.</p>
+              <span class="page-number">07</span>
+            </article>
+          </section>
+
+          <section class="spread" data-page="4" data-title="Leggere i numeri">
+            <aside class="book-page left-page">
+              <span class="running-title">ORDINI DI GRANDEZZA</span>
+              <span class="margin-note">Non mescolare le scale</span>
+              <p class="side-quote">Una richiesta e un intero data center sono unità diverse.</p>
+              <div class="not-equals"><span>Wh</span><b>≠</b><span>TWh</span></div>
+              <p class="side-footnote">Confronta numeri che descrivono le stesse cose.</p>
+              <span class="page-number">08</span>
+            </aside>
+            <article class="book-page right-page">
+              <span class="chapter-label">04 · LEGGERE I NUMERI</span>
+              <h2>Un numero piccolo.<br><em>Un sistema molto grande.</em></h2>
+              <p>Per una singola attività si usano unità piccole come Wh; per un intero settore si usano unità enormi come TWh. L'<a href="https://www.iea.org/reports/energy-and-ai" target="_blank" rel="noreferrer">IEA</a> stima che tutti i data center del mondo abbiano usato circa <b>415 TWh</b> nel 2024. È una stima per i data center nel loro insieme, non per l'AI soltanto. Il rapporto del 2025 prevede una possibile crescita, ma non è una certezza.</p>
+              <p>Negli Stati Uniti, <a href="https://www.energy.gov/articles/doe-releases-new-report-evaluating-increase-electricity-demand-data-centers" target="_blank" rel="noreferrer">LBNL/DOE</a> stima circa <b>176 TWh</b> per i data center nel 2023. Le previsioni future sono molto diverse tra loro. Sono numeri di un paese e di anni diversi: non vanno sommati al dato mondiale.</p>
+              <div class="curve-legend">
+                <div><b>0,10 Wh</b><span>Stima Google · per una richiesta</span></div>
+                <div><b>0,24 Wh</b><span>Stima Google · più parti incluse</span></div>
+                <div><b>0,002–2,9 kWh</b><span>Studio · attività molto diverse</span></div>
+                <div><b>MWh</b><span>Addestramento · caso da verificare</span></div>
+                <div><b>415 TWh</b><span>Data center · mondo, 2024</span></div>
+              </div>
+              <div class="remember-box"><b>Attenzione al confronto</b> I numeri in pagina provengono da studi diversi e descrivono attività diverse. Non dicono quanto consuma ogni domanda AI. Prima di usarli, controlla la fonte e che cosa ha contato; per l'addestramento usa solo un caso documentato.</div>
+              <span class="page-number">09</span>
+            </article>
+          </section>
+
+          <section class="spread" data-page="5" data-title="Intensità carbonica ed effetto rimbalzo">
+            <aside class="book-page left-page">
+              <span class="running-title">UN NUMERO DICE CHE COSA HA CONTATO</span>
+              <span class="margin-note">Lo stesso calcolo, reti diverse</span>
+              <div class="set-sketch" aria-hidden="true">
+                <div class="set-chip">energia per il compito</div>
+                <div class="set-chip">intensità della rete</div>
+                <div class="set-chip set-repeat">emissioni diverse <span>stesso servizio</span></div>
+              </div>
+              <p class="side-quote">La stessa elettricità può avere effetti diversi sul clima.</p>
+              <span class="page-number">10</span>
+            </aside>
+            <article class="book-page right-page">
+              <span class="chapter-label">05 · ELETTRICITÀ E USO CHE CRESCE</span>
+              <h2>Conta dove si usa l'elettricità.<br><em>E quante volte usiamo l'AI.</em></h2>
+              <p>Usare elettricità produce emissioni diverse a seconda di come quell'elettricità è stata generata. Perciò la stessa attività può avere un impatto diverso in due luoghi o in due momenti. Sapere quanta elettricità è stata usata non basta per sapere quante emissioni ne sono derivate.</p>
+              <pre class="code-block"><code>effetto sul clima = elettricità usata + modo in cui è stata prodotta</code></pre>
+              <p>Due stime possono essere diverse perché una conta solo il computer che risponde, mentre l'altra include anche altri computer e il raffreddamento. Prima di dire che una è sbagliata, controlliamo che cosa ha contato.</p>
+              <div class="remember-box"><b>Se usare l'AI diventa più facile</b> Quando un servizio costa meno o risponde più in fretta, potremmo usarlo più spesso. Il risparmio per ogni domanda potrebbe essere compensato da tante domande in più. Per questo è utile guardare sia il singolo uso sia il totale.</div>
+              <p>In alcuni casi, anche il luogo e l'ora in cui si usa l'elettricità possono fare differenza. Per dirlo con certezza servono dati aggiornati della rete; altrimenti non diamo un numero preciso.</p>
+              <span class="page-number">11</span>
+            </article>
+          </section>
+
+          <section class="spread" data-page="6" data-title="Acqua, computer e materiali">
+            <aside class="book-page left-page">
+              <span class="running-title">IMPATTI LOCALI E GLOBALI</span>
+              <span class="margin-note">Non solo carbonio</span>
+              <div class="unit-card"><b>H₂O</b><span>Acqua</span><small>diretta e indiretta</small></div>
+              <div class="unit-card"><b>PC</b><span>Computer</span><small>materiali e fine vita</small></div>
+              <p class="side-quote">Il luogo e le risorse contano insieme.</p>
+              <span class="page-number">12</span>
+            </aside>
+            <article class="book-page right-page">
+              <span class="chapter-label">06 · ACQUA, COMPUTER E MATERIALI</span>
+              <h2>Il calcolo ha un luogo.<br><em>E anche una filiera.</em></h2>
+              <p>I data center possono usare acqua per raffreddare i computer. Anche produrre elettricità può richiedere acqua. L'effetto dipende dal luogo: la stessa quantità può pesare di più dove l'acqua è scarsa. Le diverse tecniche di raffreddamento usano risorse diverse, quindi non c'è una soluzione migliore ovunque.</p>
+              <p>Per costruire i computer servono materiali, fabbriche e trasporti. I computer si riparano, si sostituiscono e alla fine diventano rifiuti. Questi effetti non si vedono contando soltanto l'elettricità usata per una risposta.</p>
+              <div class="equation-card" aria-label="Gli impatti locali dipendono da acqua, rete elettrica, hardware e territorio">
+                <span>Acqua</span><i aria-hidden="true">+</i><span>Rete e calore</span><i aria-hidden="true">+</i><b>Hardware e territorio</b>
+              </div>
+              <p><a href="https://cloud.google.com/blog/products/infrastructure/measuring-the-environmental-impact-of-ai-inference" target="_blank" rel="noreferrer">Google ha stimato nel 2025</a> 0,26 mL d'acqua per una richiesta testuale mediana al proprio modello Gemini. È un dato pubblicato dall'azienda stessa, senza un intervallo indipendente: non vale per tutti i modelli e non ci dice se l'acqua scarseggia nel luogo in cui si trova il data center.</p>
+              <span class="page-number">13</span>
+            </article>
+          </section>
+
+          <section class="spread" data-page="7" data-title="Le leve dello sviluppatore">
+            <aside class="book-page left-page">
+              <span class="running-title">DECISIONI DI PROGETTO</span>
+              <span class="margin-note">Dal bisogno al ciclo di vita</span>
+              <ul class="impact-list">
+                <li><b>Necessità</b><span>Serve davvero un modello AI?</span></li>
+                <li><b>Modello</b><span>Qual è il minimo sufficiente?</span></li>
+                <li><b>Risposte</b><span>Chiedi solo quello che serve.</span></li>
+                <li><b>Informazioni</b><span>Non inviare cose inutili.</span></li>
+              </ul>
+              <p class="side-footnote">Confronta la risposta, il tempo d'attesa e le risorse.</p>
+              <span class="page-number">14</span>
+            </aside>
+            <article class="book-page right-page">
+              <span class="chapter-label">07 · SCELTE DI CHI SVILUPPA</span>
+              <h2>Prima riduci il lavoro inutile.<br><em>Poi ottimizza ciò che resta.</em></h2>
+              <p>Prima di tutto, chiediti se serve un modello AI. Per controllare se un'email è già nell'elenco, basta una regola nel programma. Se l'AI serve davvero, prova un modello più semplice e controlla che risponda bene.</p>
+              <div class="boundary-check">
+                <h3>Sette idee per evitare sprechi</h3>
+                <ol>
+                  <li><b>Evita:</b> verifica se basta una regola o un programma semplice.</li>
+                  <li><b>Scegli:</b> usa un modello piccolo o specializzato se supera i test.</li>
+                  <li><b>Semplifica:</b> chiedi solo la risposta che ti serve.</li>
+                  <li><b>Organizza:</b> cerca prima i documenti utili.</li>
+                  <li><b>Evita ripetizioni:</b> riusa risposte valide e ferma i tentativi.</li>
+                  <li><b>Scegli il momento:</b> rimanda i lavori non urgenti, se possibile.</li>
+                  <li><b>Spegni:</b> non lasciare computer accesi senza motivo.</li>
+                </ol>
+              </div>
+              <p class="pencil-note">Confronta lo stesso compito: la risposta è giusta? Quanto aspetta la persona? Quante volte bisogna riprovare?</p>
+              <span class="page-number">15</span>
+            </article>
+          </section>
+
+          <section class="spread" data-page="8" data-title="Scegliere il modello giusto">
+            <aside class="book-page left-page">
+              <span class="running-title">UN AIUTO ADATTO AL COMPITO</span>
+              <span class="margin-note">Prima scegli il tipo di problema</span>
+              <ol class="choice-ladder">
+                <li><span>A</span><div><b>Regola o programma</b><small>Compito preciso e ripetuto.</small></div></li>
+                <li><span>B</span><div><b>Modello mirato</b><small>Compito ristretto e misurabile.</small></div></li>
+                <li><span>C</span><div><b>Modello generalista</b><small>Richiesta complessa e aperta.</small></div></li>
+              </ol>
+              <p class="side-footnote">È una lista di opzioni da provare, non una classifica universale.</p>
+              <span class="page-number">16</span>
+            </aside>
+            <article class="book-page right-page">
+              <span class="chapter-label">08 · SCEGLIERE IL MODELLO GIUSTO</span>
+              <h2>La capacità adeguata<br><em>è quella sufficiente.</em></h2>
+              <p>Per un compito semplice, come trovare email già presenti in un elenco, basta una regola nel programma. Se invece il compito richiede di capire o riassumere un testo, un modello AI può essere utile. In quel caso prova prima un modello più piccolo: potrebbe bastare.</p>
+              <p>Per scegliere, fai provare ai modelli lo stesso compito e controlla le risposte. Un modello che costa meno ma sbaglia spesso può richiedere molte correzioni. Un modello sul tuo computer e uno usato online hanno vantaggi diversi: nessuno è sempre la scelta migliore.</p>
+              <div class="choice-test" id="choice-test">
+                <p><b>Prova a scegliere:</b> il programma deve trovare email duplicate nel registro.</p>
+                <div class="choice-buttons" role="group" aria-label="Scegli una soluzione per trovare email duplicate">
+                  <button type="button" data-choice="rules">Una regola nel programma</button>
+                  <button type="button" data-choice="small">Un modello mirato</button>
+                  <button type="button" data-choice="large">Un modello generalista</button>
+                </div>
+                <p class="choice-feedback" id="choice-feedback" aria-live="polite">Scegli un'opzione per vedere quale approccio è proporzionato a questo esempio e perché.</p>
+              </div>
+              <p class="pencil-note">Puoi usare l'AI per scrivere la funzione e scegliere comunque una regola semplice per eseguirla.</p>
+              <span class="page-number">17</span>
+            </article>
+          </section>
+
+          <section class="spread" data-page="9" data-title="Domande, informazioni e riuso">
+            <aside class="book-page left-page">
+              <span class="running-title">CONTESTO MIRATO</span>
+              <span class="margin-note">Taglia il lavoro ripetuto</span>
+              <div class="next-word-sketch" aria-label="Esempio illustrativo di continuazioni possibili">
+                <span>Prima · invia tutto</span>
+                <div><b>file pertinenti</b><small>contesto essenziale</small></div>
+                <div><b>cache valida</b><small>riusa ciò che non cambia</small></div>
+              </div>
+              <p class="side-quote">Meno contesto superfluo, meno chiamate ridondanti.</p>
+              <span class="page-number">20</span>
+            </aside>
+            <article class="book-page right-page">
+              <span class="chapter-label">09 · DOMANDE, INFORMAZIONI E RIUSO</span>
+              <h2>Invia le informazioni utili.<br><em>Non tutto il resto.</em></h2>
+              <p>Una domanda può essere accompagnata da molto altro testo, come istruzioni, documenti e messaggi precedenti. Seleziona solo le parti che servono. Così il computer deve leggere meno informazioni; controlla però che il modello riesca ancora a rispondere bene.</p>
+              <p>Se fai spesso la stessa domanda, potresti riutilizzare una risposta già data, purché sia ancora corretta. Se un programma automatico continua a fare domande al modello, stabilisci quando deve fermarsi: senza un limite potrebbe riprovare molte volte.</p>
+              <div class="example-split">
+                <article><b>Prima</b><p>Inviare tutti i documenti e ripetere la domanda.</p></article>
+                <article><b>Dopo</b><p>Inviare solo il documento utile e fermarsi quando la risposta è corretta.</p></article>
+              </div>
+              <div class="remember-box"><b>Effetto atteso</b> Meno testo e meno domande ripetute possono ridurre costo e attesa. Controlla che le risposte riutilizzate siano ancora aggiornate.</div>
+              <span class="page-number">21</span>
+            </article>
+          </section>
+
+          <section class="spread" data-page="10" data-title="Rendere il modello più semplice">
+            <aside class="book-page left-page">
+              <span class="running-title">SEMPLIFICARE IL LAVORO</span>
+              <span class="margin-note">Una prova per ogni tecnica</span>
+              <ol class="test-cases">
+                <li><span>01</span><div><b>Modello più leggero</b><small>Controllare che risponda bene.</small></div></li>
+                <li><span>02</span><div><b>Più richieste insieme</b><small>Controllare i tempi di attesa.</small></div></li>
+                <li><span>03</span><div><b>Risposta breve</b><small>Chiedere solo il necessario.</small></div></li>
+                <li><span>04</span><div><b>Riutilizzare risposte</b><small>Controllare che siano aggiornate.</small></div></li>
+                <li><span>05</span><div><b>Provare con più persone</b><small>Controllare ritardi ed errori.</small></div></li>
+              </ol>
+              <span class="page-number">22</span>
+            </aside>
+            <article class="book-page right-page">
+              <span class="chapter-label">10 · RENDERE IL MODELLO PIÙ SEMPLICE</span>
+              <h2>Riduci il calcolo<br><em>senza perdere il risultato.</em></h2>
+              <p>Un modo per alleggerire un modello è semplificare i calcoli che fa. Un altro è riunire più domande e farle elaborare insieme. Queste tecniche possono aiutare i computer a lavorare meglio, ma a volte fanno aspettare di più o peggiorano le risposte. Un consiglio semplice è chiedere solo una risposta lunga quanto serve.</p>
+              <div class="test-pyramid">
+                <div><span>01</span><p><b>Qualità</b><small>Il compito riesce ancora?</small></p></div>
+                <div><span>02</span><p><b>Attesa</b><small>Quanto aspetta la persona?</small></p></div>
+                <div><span>03</span><p><b>Energia e memoria</b><small>Quali componenti misuri?</small></p></div>
+                <div><span>04</span><p><b>Più persone</b><small>Che cosa cambia se crescono?</small></p></div>
+              </div>
+              <p>Prova ogni cambiamento sullo stesso compito. Controlla che la risposta resti corretta e che le persone non debbano aspettare molto di più. Se il sistema sbaglia o rallenta, il cambiamento non è un miglioramento.</p>
+              <div class="remember-box"><b>Prova a ricordare</b> Risparmiare è utile solo se il risultato resta buono e arriva in tempo.</div>
+              <span class="page-number">23</span>
+            </article>
+          </section>
+
+          <section class="spread" data-page="11" data-title="Quante persone usano il servizio">
+            <aside class="book-page left-page">
+              <span class="running-title">QUANDO IL PRODOTTO CRESCE</span>
+              <span class="margin-note">Il conto cambia con il pubblico</span>
+              <div class="scale-equation"><span>utenti</span><b>×</b><span>azioni per utente</span><b>×</b><span>tentativi</span><strong>= chiamate totali</strong></div>
+              <div class="growth-note"><b>Attenzione al moltiplicatore</b><p>Una richiesta rara e una funzione usata centinaia di volte al giorno non sono lo stesso scenario di prodotto.</p></div>
+              <span class="page-number">24</span>
+            </aside>
+            <article class="book-page right-page">
+              <span class="chapter-label">11 · QUANTE PERSONE USANO IL SERVIZIO</span>
+              <h2>Una domanda oggi.<br><em>Tante domande in un mese.</em></h2>
+              <p>Se 30 persone usano una funzione 20 volte al giorno e fanno in media 2 domande per completare il compito, sono 1.200 domande al giorno. Se ogni domanda contiene circa 1.450 piccoli pezzi di testo, il totale è 1.740.000 pezzi. È un esempio per capire come il numero cresce: non misura l'elettricità.</p>
+              <p>Se il modello deve usare documenti, possiamo cercare prima le pagine utili e inviargliele, invece di inviare ogni volta tutto. Se le informazioni cambiano spesso, questo può essere più pratico che preparare di nuovo il modello. La scelta dipende da quanto spesso cambiano i documenti e da quanto bene il sistema risponde.</p>
+              <div class="usage-explorer">
+                <label for="users-slider">Persone che usano la funzione <output id="users-value" for="users-slider">30</output></label>
+                <input id="users-slider" type="range" min="1" max="200" value="30">
+                <label for="actions-slider">Compiti per persona al giorno <output id="actions-value" for="actions-slider">20</output></label>
+                <input id="actions-slider" type="range" min="1" max="100" value="20">
+                <div class="usage-results" aria-live="polite">
+                  <p><span>Chiamate, con 2 tentativi medi</span><b id="usage-calls">1.200</b></p>
+                  <p><span>Pezzi di testo elaborati, in questo esempio</span><b id="usage-tokens">1.740.000</b></p>
+                </div>
+                <p class="small-caveat">Esempio di volume basato su ipotesi modificabili: non è un contatore dell'energia usata.</p>
+              </div>
+              <p>Sposta i cursori e guarda che cosa succede quando aumentano le persone o le domande. Il conteggio mostra quante richieste e quante parole elaborate ci possono essere; non misura l'elettricità. Per sapere quale soluzione conviene, confronta risposte corrette e tempi d'attesa.</p>
+              <span class="page-number">25</span>
+            </article>
+          </section>
+
+          <section class="spread" data-page="12" data-title="Dove e quando eseguire">
+            <aside class="book-page left-page">
+              <span class="running-title">LOCALITÀ E CICLO DI VITA</span>
+              <span class="margin-note">Sposta il carico solo se ha senso</span>
+              <ul class="impact-list">
+                <li><b>Regione</b><span>Quale mix elettrico e quali vincoli?</span></li>
+                <li><b>Orario</b><span>Il lavoro può aspettare?</span></li>
+                <li><b>Risultati salvati</b><span>Si può riusare il lavoro svolto?</span></li>
+                <li><b>Risorse</b><span>Spegni ciò che resta inattivo.</span></li>
+              </ul>
+              <div class="growth-note"><b>Scegliere quando lavorare</b><p>Un'attività non urgente può aspettare un momento più adatto.</p></div>
+              <span class="page-number">26</span>
+            </aside>
+            <article class="book-page right-page">
+              <span class="chapter-label">12 · DOVE E QUANDO ESEGUIRE</span>
+              <h2>Se il lavoro può aspettare,<br><em>scegli il momento e il luogo.</em></h2>
+              <p>Se un lavoro non è urgente, a volte si può scegliere di farlo in un altro momento o in un altro luogo. Questo può ridurre le emissioni, cioè l'inquinamento legato all'elettricità usata, ma servono dati per esserne sicuri. Non è adatto a una risposta che deve arrivare subito.</p>
+              <p>Quando un computer o un programma non serve, spegnilo. Evita di ripetere lavori già fatti senza motivo. Queste scelte semplici aiutano a non sprecare risorse.</p>
+              <div class="remember-box"><b>Prima di spostare un'attività</b> Controlla che possa aspettare e chiedi se il nuovo luogo o momento riduce davvero l'impatto.</div>
+              <span class="page-number">27</span>
+            </article>
+          </section>
+
+          <section class="spread" data-page="13" data-title="Dare informazioni al modello">
+            <aside class="book-page left-page">
+              <span class="running-title">SCELTE DI ARCHITETTURA</span>
+              <span class="margin-note">Confronta il ciclo di vita</span>
+              <ol class="lab-checklist">
+                <li>Domanda e informazioni inviate</li>
+                <li>Documenti indicizzati</li>
+                <li>Preparazione aggiuntiva</li>
+                <li>Qualità e tempo di risposta</li>
+                <li>Manutenzione nel tempo</li>
+              </ol>
+              <p class="side-footnote">Scegli in base al bisogno, non alla moda tecnica.</p>
+              <span class="page-number">28</span>
+            </aside>
+            <article class="book-page right-page">
+              <span class="chapter-label">13 · DARE INFORMAZIONI AL MODELLO</span>
+              <h2>Tre modi per dare informazioni<br><em>al modello.</em></h2>
+              <p>Possiamo scrivere istruzioni nella domanda, cercare nei documenti e mostrare al modello solo le pagine utili, oppure preparare il modello per un compito preciso. La scelta dipende da una domanda semplice: le informazioni cambiano spesso oppure no?</p>
+              <div class="benchmark-cards">
+                <article><span>1 · ISTRUZIONI</span><p>Informazioni ripetute e costo per ogni richiesta.</p></article>
+                <article><span>2 · CERCA</span><p>Trova i documenti utili al momento della domanda.</p></article>
+                <article><span>3 · PREPARA</span><p>Insegna al modello un compito che cambia poco.</p></article>
+                <article><span>4 · CONFRONTA</span><p>Qualità, energia, tempo di risposta e costi di manutenzione.</p></article>
+              </div>
+              <p>Se i documenti cambiano spesso, cercare le pagine aggiornate può essere più semplice che preparare di nuovo il modello. Se il modello deve svolgere sempre lo stesso compito, può avere senso adattarlo. Ogni soluzione ha costi diversi: scegli quella che funziona meglio per il tuo caso.</p>
+              <div class="remember-box"><b>Confronto corretto</b> Prova le soluzioni sullo stesso compito e controlla quale dà risposte migliori con meno passaggi.</div>
+              <span class="page-number">29</span>
+            </article>
+          </section>
+
+          <section class="spread" data-page="14" data-title="Misurare con strumenti">
+            <aside class="book-page left-page">
+              <span class="running-title">MISURARE IL SOFTWARE</span>
+              <span class="margin-note">Misurato non significa completo</span>
+              <div class="claim-card">
+                <span>Strumenti open source</span>
+                <b>CodeCarbon · Green Algorithms · ML.ENERGY</b>
+              </div>
+              <div class="claim-arrow">↓</div>
+              <div class="claim-card claim-check">
+                <span>Confronta risorse e risultato</span>
+                <b>Quanto serve per un compito riuscito?</b>
+              </div>
+              <p class="side-footnote">Dì che cosa hai misurato e che cosa non puoi vedere.</p>
+              <span class="page-number">30</span>
+            </aside>
+            <article class="book-page right-page">
+              <span class="chapter-label">14 · MISURARE CON STRUMENTI SEMPLICI</span>
+              <h2>Misurare aiuta a scegliere.<br><em>Ma non possiamo vedere tutto.</em></h2>
+              <p>Strumenti come CodeCarbon, Green Algorithms e ML.ENERGY/Zeus possono aiutare a stimare o misurare l'elettricità usata da un computer durante una prova. Ogni strumento ha dei limiti e non mostra automaticamente il consumo dei server di un'azienda esterna. Prima di usarne uno, controlla che cosa misura.</p>
+              <div class="source-questions">
+                <p><b>1</b><span>Elettricità usata.</span></p>
+                <p><b>2</b><span>Come è stata prodotta l'elettricità.</span></p>
+                <p><b>3</b><span>Impatto dei computer costruiti.</span></p>
+                <p><b>4</b><span>Un lavoro completato bene.</span></p>
+              </div>
+              <p>Una guida della Green Software Foundation propone un modo per confrontare le emissioni con il lavoro svolto: per esempio, quanta elettricità e quante emissioni servono per una risposta corretta. Se usi un servizio online, il fornitore potrebbe conoscere dati che tu non puoi vedere dal tuo computer. Se non li comunica, dì che non sono disponibili.</p>
+              <div class="remember-box"><b>Demo consigliata</b> Fai svolgere lo stesso compito a un modello grande e a uno piccolo. Controlla quale risponde correttamente, quanto tempo impiega e quanta energia usa il computer, se puoi misurarla.</div>
+              <span class="page-number">31</span>
+            </article>
+          </section>
+
+          <section class="spread" data-page="15" data-title="AI per l'ambiente e regole">
+            <aside class="book-page left-page">
+              <span class="running-title">BENEFICI E RESPONSABILITÀ</span>
+              <span class="margin-note">Misura il risultato netto</span>
+              <dl class="project-notes">
+                <div><dt>Energia</dt><dd>Domanda e produzione rinnovabile.</dd></div>
+                <div><dt>Edifici</dt><dd>Raffreddamento e controllo.</dd></div>
+                <div><dt>Ambiente</dt><dd>Monitoraggio e immagini.</dd></div>
+                <div><dt>Beneficio</dt><dd>Che cosa succedeva prima?</dd></div>
+                <div><dt>Regole</dt><dd>Chi deve rendicontare?</dd></div>
+              </dl>
+              <span class="page-number">32</span>
+            </aside>
+            <article class="book-page right-page">
+              <span class="chapter-label">15 · AI PER L'AMBIENTE E REGOLE</span>
+              <h2>L'AI può aiutare.<br><em>Controlliamo se funziona.</em></h2>
+              <p>L'AI può aiutare a prevedere quanta energia servirà, regolare il riscaldamento di un edificio o osservare immagini della natura. Ma una previsione migliore non prova da sola che si risparmi energia: bisogna vedere che cosa è cambiato davvero.</p>
+              <p>Google ha raccontato di aver usato l'AI per migliorare il raffreddamento di alcuni suoi data center. È un esempio pubblicato dall'azienda stessa e riguarda il raffreddamento, non tutto il consumo dell'edificio. È una possibilità, non una garanzia per ogni luogo.</p>
+              <p>In Europa esistono regole che chiedono ad alcune aziende di spiegare il proprio impatto e di fornire informazioni sui modelli AI. Chi sviluppa può chiedere questi dati ai fornitori. Le regole cambiano: prima di presentarle, controlla le fonti ufficiali aggiornate.</p>
+              <div class="remember-box"><b>Prima di dire «ha aiutato»</b> Confronta che cosa succedeva prima e dopo, e controlla se il risultato è davvero migliore.</div>
+              <span class="page-number">33</span>
+            </article>
+          </section>
+
+          <section class="spread" data-page="16" data-title="Checklist e domande">
+            <aside class="book-page left-page last-page">
+              <span class="running-title">DA PORTARE NEL TEAM</span>
+              <span class="margin-note">Checklist in sei domande</span>
+              <div class="three-questions recap-questions">
+                <div><span>01</span><b>Serve davvero?</b></div>
+                <div><span>02</span><b>Quale modello minimo?</b></div>
+                <div><span>03</span><b>Lo misuro?</b></div>
+              </div>
+              <p class="side-quote">Né panico né indifferenza: misure e scelte proporzionate.</p>
+              <span class="page-number">34</span>
+            </aside>
+            <article class="book-page right-page">
+              <span class="chapter-label">16 · CHECKLIST E DOMANDE</span>
+              <h2>Porta una domanda<br><em>al prossimo progetto.</em></h2>
+              <p>Prima di integrare l'AI, fermati su sei domande. La risposta non deve essere perfetta al primo giorno, ma deve rendere esplicite le ipotesi, i dati ancora mancanti e chi può verificarli. Ripeti il confronto quando cambiano modello, volume, hardware o località.</p>
+              <div class="boundary-check">
+                <h3>Sei domande prima di decidere</h3>
+                <ol>
+                  <li><b>Mi serve davvero l'AI?</b> Posso risolvere il problema in modo più semplice?</li>
+                  <li><b>Quale soluzione basta?</b> Ho provato un modello più piccolo?</li>
+                  <li><b>Posso evitare ripetizioni?</b> Posso riusare una risposta ancora valida?</li>
+                  <li><b>Dove gira?</b> I computer sono sul mio dispositivo o online?</li>
+                  <li><b>Come controllo il risultato?</b> La risposta è corretta?</li>
+                  <li><b>Che cosa non so?</b> Quali informazioni posso chiedere al fornitore?</li>
+                </ol>
+              </div>
+              <div class="example-split">
+                <article><b>Computer proprio o servizio online?</b><p>Il computer proprio dà più controllo; il servizio online evita di dover gestire il computer. Confronta privacy, velocità e risorse.</p></article>
+                <article><b>Posso fare a meno dell'AI?</b><p>Sì, se una regola più semplice risolve il problema. In altri casi l'AI può essere utile.</p></article>
+              </div>
+              <div class="recall-card">
+                <p class="recall-prompt" id="recall-prompt">Una domanda breve è sempre meglio? La quantità di testo dice quanta elettricità è stata usata?</p>
+                <button class="reveal-answer" type="button" id="reveal-answer" aria-expanded="false" aria-controls="recall-answer">Gira il cartoncino <span aria-hidden="true">↻</span></button>
+                <p class="recall-answer" id="recall-answer" hidden>Non sempre. Se una domanda breve non si capisce e bisogna ripeterla, si può finire per fare più lavoro. La quantità di testo non dice da sola quanta elettricità è stata usata.</p>
+              </div>
+              <p class="closing-line">Alla domanda iniziale — quanto costa una richiesta? — la risposta resta “dipende”. Ora sappiamo quali variabili controllare e quali scelte possiamo fare prima di avere il numero perfetto.</p>
+              <a class="source-link" href="talk.html">Vuoi approfondire? Apri la guida estesa con fonti e spiegazioni <span aria-hidden="true">↗</span></a>
+              <span class="page-number">35</span>
+            </article>
+          </section>
+
+          <div class="page-turn" id="page-turn" aria-hidden="true"><div class="turn-face turn-front"></div><div class="turn-face turn-back"></div><span class="curl-highlight"></span></div>
+        </div>
+      </div>
+
+      <div class="reader-controls">
+        <button class="turn-button back-button" id="previous-page" type="button" aria-label="Sfoglia indietro" disabled><span aria-hidden="true">←</span><span>Indietro</span></button>
+        <p class="keyboard-hint"></p>
+        <button class="turn-button next-button" id="next-page" type="button" aria-label="Sfoglia avanti"><span>Volta pagina</span><span aria-hidden="true">→</span></button>
+      </div>
+      <p class="reader-endnote">Leggi al tuo ritmo: usa i pulsanti, trascina la pagina o salta a un capitolo dall'indice.</p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <a class="brand" href="#libro"><span class="brand-mark">g<span>·</span>c</span><span class="brand-name">green·code</span></a>
+    <p>Un libro da consultare, non una verifica da superare.</p>
+    <a href="talk.html">Vai alla versione estesa</a>
+  </footer>
+</body>
+</html>
